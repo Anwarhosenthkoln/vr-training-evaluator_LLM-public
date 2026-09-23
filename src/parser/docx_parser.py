@@ -42,10 +42,10 @@ def parse_docx_log(filepath):
             continue
             
         # Section detection
-        if "Aktion Log:" in line:
+        if "Aktion Log" in line or line.strip() == "Log:":
             current_section = "aktion_log"
             continue
-        elif "Vital Log:" in line or "Uhrzeit | Zeit |" in line:
+        elif "Vital Log" in line or "Uhrzeit | Zeit |" in line:
             current_section = "vital_log"
             # Extract headers from the line if it looks like the header row
             if "|" in line and "HR" in line:

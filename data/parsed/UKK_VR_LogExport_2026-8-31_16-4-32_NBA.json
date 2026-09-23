@@ -19,7 +19,8 @@
             "action_raw": "Puls messen",
             "action_code": "CHECK_PULSE",
             "phase": "Start",
-            "details": "Radialiskorrekt, besser vorher Ansorache und Atemkontrolle"
+            "details": "Radialiskorrekt, besser vorher Ansorache und Atemkontrolle",
+            "expert_comment": null
         },
         {
             "id": 2,
@@ -30,7 +31,8 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_NPC",
             "phase": "Start",
-            "details": "NPC rufen: Pflege (Sascha)korrekt"
+            "details": "NPC rufen: Pflege (Sascha)korrekt",
+            "expert_comment": null
         },
         {
             "id": 3,
@@ -41,7 +43,8 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_NPC",
             "phase": "Start",
-            "details": "NPC rufen: Medizin (Charlie)korrekt"
+            "details": "NPC rufen: Medizin (Charlie)korrekt",
+            "expert_comment": null
         },
         {
             "id": 4,
@@ -52,7 +55,8 @@
             "action_raw": "Puls messen",
             "action_code": "CHECK_PULSE",
             "phase": "Stop",
-            "details": "Puls schwachkorrekt"
+            "details": "Puls schwachkorrekt",
+            "expert_comment": null
         },
         {
             "id": 5,
@@ -63,7 +67,8 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "Sascha -> Hole Gegenstand"
+            "details": "Sascha -> Hole Gegenstand",
+            "expert_comment": null
         },
         {
             "id": 6,
@@ -74,7 +79,8 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "Notfallkoffer, EKG, Ultraschall, Monitor, Infusionsmaterial"
+            "details": "Notfallkoffer, EKG, Ultraschall, Monitor, Infusionsmaterial",
+            "expert_comment": null
         },
         {
             "id": 7,
@@ -85,7 +91,8 @@
             "action_raw": "Patient entkleiden",
             "action_code": "UNDRESS_PATIENT",
             "phase": "Start",
-            "details": "korrekt"
+            "details": "korrekt",
+            "expert_comment": null
         },
         {
             "id": 8,
@@ -96,7 +103,8 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_PALPATION",
             "phase": "Start",
-            "details": "Charlie -> Palpation"
+            "details": "Charlie -> Palpation",
+            "expert_comment": null
         },
         {
             "id": 9,
@@ -107,7 +115,8 @@
             "action_raw": "Palpation",
             "action_code": "PALPATION",
             "phase": "Start",
-            "details": "Thoraxkorrekt"
+            "details": "Thoraxkorrekt",
+            "expert_comment": null
         },
         {
             "id": 10,
@@ -118,7 +127,8 @@
             "action_raw": "Patient entkleiden",
             "action_code": "UNDRESS_PATIENT",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 11,
@@ -129,7 +139,8 @@
             "action_raw": "Palpation",
             "action_code": "PALPATION",
             "phase": "Stop",
-            "details": "stabil"
+            "details": "stabil",
+            "expert_comment": null
         },
         {
             "id": 12,
@@ -140,7 +151,8 @@
             "action_raw": "PVK",
             "action_code": "IV_ACCESS",
             "phase": "Start",
-            "details": "Anlage links korrekt, besser nach Vitalparametern"
+            "details": "Anlage links korrekt, besser nach Vitalparametern",
+            "expert_comment": null
         },
         {
             "id": 13,
@@ -151,7 +163,8 @@
             "action_raw": "PVK",
             "action_code": "IV_ACCESS",
             "phase": "Warning",
-            "details": "Nicht auf Desinfektion gewartet"
+            "details": "Nicht auf Desinfektion gewartet",
+            "expert_comment": null
         },
         {
             "id": 14,
@@ -162,7 +175,8 @@
             "action_raw": "PVK",
             "action_code": "IV_ACCESS",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 15,
@@ -173,7 +187,8 @@
             "action_raw": "ReCap",
             "action_code": "RECAP_TIME",
             "phase": "Start",
-            "details": "Linkskorrekt"
+            "details": "Linkskorrekt",
+            "expert_comment": null
         },
         {
             "id": 16,
@@ -184,7 +199,8 @@
             "action_raw": "ReCap",
             "action_code": "RECAP_TIME",
             "phase": "Stop",
-            "details": "Langsam"
+            "details": "Langsam",
+            "expert_comment": null
         },
         {
             "id": 17,
@@ -195,7 +211,8 @@
             "action_raw": "Neurologische Untersuchung",
             "action_code": "UNKNOWN_ACTION",
             "phase": "Start",
-            "details": "korrekt aber könnte auch nachrangig erfolgen"
+            "details": "korrekt aber könnte auch nachrangig erfolgen",
+            "expert_comment": null
         },
         {
             "id": 18,
@@ -206,7 +223,8 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 19,
@@ -217,7 +235,8 @@
             "action_raw": "Neurologische Untersuchung",
             "action_code": "UNKNOWN_ACTION",
             "phase": "Stop",
-            "details": "Keine Anzeichen für eine Fazialisparese,"
+            "details": "Keine Anzeichen für eine Fazialisparese,",
+            "expert_comment": null
         },
         {
             "id": 20,
@@ -228,7 +247,8 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_ULTRASOUND_FAST",
             "phase": "Start",
-            "details": "Charlie -> Ultraschall"
+            "details": "Charlie -> Ultraschall",
+            "expert_comment": null
         },
         {
             "id": 21,
@@ -239,7 +259,8 @@
             "action_raw": "Ultraschall",
             "action_code": "ULTRASOUND_FAST",
             "phase": "Start",
-            "details": "korrekt"
+            "details": "korrekt",
+            "expert_comment": null
         },
         {
             "id": 22,
@@ -250,7 +271,8 @@
             "action_raw": "Blutdruckmanschette",
             "action_code": "BP_CUFF_APPLY",
             "phase": "Start",
-            "details": "Anlage rechtskorrekt"
+            "details": "Anlage rechtskorrekt",
+            "expert_comment": null
         },
         {
             "id": 23,
@@ -261,7 +283,8 @@
             "action_raw": "Monitor anbauen",
             "action_code": "MONITOR_ATTACH",
             "phase": "Start",
-            "details": "korrekt"
+            "details": "korrekt",
+            "expert_comment": null
         },
         {
             "id": 24,
@@ -272,7 +295,8 @@
             "action_raw": "Pulsoxymetrie",
             "action_code": "PULSE_OX_APPLY",
             "phase": "Start",
-            "details": "Anlage Rechts"
+            "details": "Anlage Rechts",
+            "expert_comment": null
         },
         {
             "id": 25,
@@ -283,7 +307,8 @@
             "action_raw": "EKG 3-Kanal",
             "action_code": "ECG_3LEAD_APPLY",
             "phase": "Start",
-            "details": "Anlage 3-Kanal"
+            "details": "Anlage 3-Kanal",
+            "expert_comment": null
         },
         {
             "id": 26,
@@ -294,7 +319,8 @@
             "action_raw": "EKG 12-Kanal",
             "action_code": "UNKNOWN_ACTION",
             "phase": "Start",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 27,
@@ -305,7 +331,8 @@
             "action_raw": "Infusion",
             "action_code": "INFUSION",
             "phase": "Start",
-            "details": "(Gabe) Vollelektrolytlösung, 500mlkorrekt"
+            "details": "(Gabe) Vollelektrolytlösung, 500mlkorrekt",
+            "expert_comment": null
         },
         {
             "id": 28,
@@ -316,7 +343,8 @@
             "action_raw": "Monitor anbauen",
             "action_code": "MONITOR_ATTACH",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 29,
@@ -327,7 +355,8 @@
             "action_raw": "Sauerstoffgabe",
             "action_code": "OXYGEN_APPLY",
             "phase": "Start",
-            "details": "Anlage Sauerstoffmaskekorrekt, hätte bereits früher erfolgen können,"
+            "details": "Anlage Sauerstoffmaskekorrekt, hätte bereits früher erfolgen können,",
+            "expert_comment": null
         },
         {
             "id": 30,
@@ -338,7 +367,8 @@
             "action_raw": "Infusion",
             "action_code": "INFUSION",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 31,
@@ -349,7 +379,8 @@
             "action_raw": "Sauerstoffgabe",
             "action_code": "OXYGEN_APPLY",
             "phase": "Start",
-            "details": "Fluss 9,1"
+            "details": "Fluss 9,1",
+            "expert_comment": null
         },
         {
             "id": 32,
@@ -360,7 +391,8 @@
             "action_raw": "EKG 12-Kanal",
             "action_code": "UNKNOWN_ACTION",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 33,
@@ -371,7 +403,8 @@
             "action_raw": "Ultraschall",
             "action_code": "ULTRASOUND_FAST",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 34,
@@ -382,7 +415,8 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "Sascha -> Hole Gegenstand"
+            "details": "Sascha -> Hole Gegenstand",
+            "expert_comment": null
         },
         {
             "id": 35,
@@ -393,7 +427,8 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "Defibrillator, Stationsmedikamente korrekt"
+            "details": "Defibrillator, Stationsmedikamente korrekt",
+            "expert_comment": null
         },
         {
             "id": 36,
@@ -404,7 +439,8 @@
             "action_raw": "Palpation",
             "action_code": "PALPATION",
             "phase": "Start",
-            "details": "Thorax"
+            "details": "Thorax",
+            "expert_comment": null
         },
         {
             "id": 37,
@@ -415,7 +451,8 @@
             "action_raw": "Palpation",
             "action_code": "PALPATION",
             "phase": "Stop",
-            "details": "stabil"
+            "details": "stabil",
+            "expert_comment": null
         },
         {
             "id": 38,
@@ -426,7 +463,8 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Stop",
-            "details": ""
+            "details": "",
+            "expert_comment": null
         },
         {
             "id": 39,
@@ -437,7 +475,8 @@
             "action_raw": "Defibrillator",
             "action_code": "DEFIBRILLATOR",
             "phase": "Start",
-            "details": "Defibrillator angeschlossenkorrekt"
+            "details": "Defibrillator angeschlossenkorrekt",
+            "expert_comment": null
         }
     ],
     "vital_parameters": [

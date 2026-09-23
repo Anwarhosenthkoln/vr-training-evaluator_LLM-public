@@ -42,10 +42,10 @@ def parse_docx_log(filepath):
             continue
             
         # Section detection
-        if "Aktion Log:" in line:
+        if "Aktion Log" in line or line.strip() == "Log:":
             current_section = "aktion_log"
             continue
-        elif "Vital Log:" in line or "Uhrzeit | Zeit |" in line:
+        elif "Vital Log" in line or "Uhrzeit | Zeit |" in line:
             current_section = "vital_log"
             # Extract headers from the line if it looks like the header row
             if "|" in line and "HR" in line:
@@ -78,6 +78,16 @@ def parse_docx_log(filepath):
                             delegated_action = match.group(1).strip()
                             action_code = f"DELEGATE_{ACTION_MAP.get(delegated_action, 'UNKNOWN')}"
 
+                    expert_comment = None
+                    # Try to extract the doctor's inline comment, which often appears at the end in parentheses
+                    comment_match = re.search(r'\(([^)]+)\)$', details.strip())
+                    if comment_match:
+                        comment_text = comment_match.group(1).strip()
+                        # Verify it looks like a real comment (e.g. contains 'richtig', 'falsch', or is long enough)
+                        if len(comment_text) > 5 or any(k in comment_text.lower() for k in ["richtig", "falsch", "korrekt"]):
+                            expert_comment = comment_text
+                            details = details[:comment_match.start()].strip()
+
                     session_data["events"].append({
                         "id": len(session_data["events"]) + 1,
                         "wall_clock": wall_clock,
@@ -87,7 +97,8 @@ def parse_docx_log(filepath):
                         "action_raw": action,
                         "action_code": action_code,
                         "phase": phase,
-                        "details": details
+                        "details": details,
+                        "expert_comment": expert_comment
                     })
 
         elif current_section == "vital_log":

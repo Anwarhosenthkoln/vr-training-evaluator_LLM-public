@@ -1,0 +1,86 @@
+body {
+    background-color: #f3f4f6;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #1f2937;
+}
+
+.dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #111827;
+    margin-bottom: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 20px auto;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin-bottom: 8px;
+    background: #f9fafb;
+    border-radius: 6px;
+    border-left: 4px solid #9ca3af;
+}
+
+.abcde-card li.pass {
+    border-left-color: #10b981;
+}
+
+.abcde-card li.fail {
+    border-left-color: #ef4444;
+}
+
+.errors-card li {
+    background: #fef2f2;
+    border-left-color: #ef4444;
+    color: #b91c1c;
+    font-weight: 600;
+}

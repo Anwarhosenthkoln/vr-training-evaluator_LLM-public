@@ -1,0 +1,22 @@
+14:32:19 | 0:09 | Jens | NPC beauftragen | Start | NPC rufen: Pflege (Kim)
+14:32:22 | 0:12 | Jens | NPC beauftragen | Start | NPC rufen: Medizin (Alex)
+14:33:19 | 1:09 | Jens | NPC beauftragen | Start | Kim -> Patient entkleiden |
+14:33:20 | 1:10 | Kim | Patient entkleiden | Start |
+14:33:22 | 1:12 | Jens | NPC beauftragen | Start | Kim -> PVK | Anlage rechts
+14:33:26 | 1:16 | Kim | Patient entkleiden | Stop |
+14:33:27 | 1:17 | Kim | PVK | Start | Anlage rechts
+14:33:28 | 1:18 | Jens | NPC beauftragen | Start | Alex -> Palpation | Thorax
+14:33:28 | 1:18 | Alex | Palpation | Start | Thorax
+14:33:30 | 1:20 | Kim | PVK | Stop |
+14:33:30 | 1:20 | Jens | Blutdruckmanschette | Start | Anlage rechts
+14:33:31 | 1:21 | Jens | Pulsoxymetrie | Start | Anlage Rechts
+14:33:32 | 1:22 | Jens | EKG 3-Kanal | Start | Anlage 3-Kanal
+14:33:35 | 1:25 | Alex | Palpation | Stop | stabil
+14:33:38 | 1:28 | Jens | Infusion | Start | (Vorbereiten) Glukoselösung 20%, 1000ml
+14:33:41 | 1:31 | Jens | Infusion | Stop |
+14:33:46 | 1:36 | Jens | Medikament | Start | Adrenalin 0,5 mg
+14:33:52 | 1:42 | Jens | Medikament | Stop |
+14:34:03 | 1:53 | Jens | Infusion | Start | (Gabe) Glukoselösung 20%, 1000ml
+14:34:06 | 1:56 | Jens | Infusion | Stop |
+14:34:12 | 2:02 | Jens | Absaugen | Start |
+14:34:13 | 2:03 | Jens | Sauerstoffgabe | Start | Anlage Nasenbrille

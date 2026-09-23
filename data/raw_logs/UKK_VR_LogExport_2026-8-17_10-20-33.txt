@@ -1,0 +1,105 @@
+﻿1:22 | Elena | NPC beauftragen | Start | NPC rufen: Pflege ()
+2:29 | Elena | Atmung prüfen | Start | 
+2:39 | Elena | Atmung prüfen | Stop | 
+3:12 | Elena | Palpation | Start | Abdomen
+3:15 | Elena | Palpation | Stop | druckschmerzhaft  weich
+3:59 | Elena | Palpation | Start | Thorax
+4:02 | Elena | Palpation | Stop | stabil
+5:52 | Elena | Patient entkleiden | Start | 
+5:52 | Elena | Patient entkleiden | Abbrechen | Patient weigert sich
+6:28 | Elena | NPC beauftragen | Start | Pflege -> Raum verlassen | 
+6:29 | Pflege | Raum verlassen | Start | 
+6:41 | Elena | Patient entkleiden | Start | 
+6:41 | Elena | Patient entkleiden | Abbrechen | Patient weigert sich
+7:03 | Elena | Patient entkleiden | Start | 
+7:06 | Elena | Patient entkleiden | Stop | 
+8:09 | Elena | Palpation | Start | Abdomen
+8:12 | Elena | Palpation | Stop | druckschmerzhaft  weich
+8:21 | Elena | Puls messen | Start | Femoralis
+8:31 | Elena | Puls messen | Stop | Puls deutlich tastbar
+8:56 | Elena | NPC beauftragen | Start | Pflege -> Blutentnahme | 
+8:56 | Pflege | Blutentnahme | Start | 
+9:02 | Pflege | Blutentnahme | Stop | 
+9:24 | Elena | Puls messen | Start | Radialis
+9:34 | Elena | Puls messen | Stop | Puls deutlich tastbar
+9:47 | Elena | HWS-Stabilisieren | Start | Anlage
+9:50 | Elena | HWS-Stabilisieren | Stop | 
+10:09 | Elena | NPC beauftragen | Start | Pflege -> EKG 3-Kanal | Anlage 3-Kanal
+10:09 | Pflege | EKG 3-Kanal | Start | Anlage 3-Kanal
+10:16 | Pflege | EKG 3-Kanal | Stop | 
+11:11 | Elena | Blutdruckmanschette | Start | Anlage rechts
+11:33 | Elena | Palpation | Start | Langer Röhrenknochen links
+11:36 | Elena | Palpation | Stop | stabil
+11:53 | Elena | NPC beauftragen | Start | Medizin -> HWS-Verletzung prüfen | 
+11:53 | Medizin | HWS-Verletzung prüfen | Start | 
+11:59 | Medizin | HWS-Verletzung prüfen | Stop | HWS mit Stiffneck versorgt
+15:29 | Elena | Puls messen | Start | Radialis
+15:39 | Elena | Puls messen | Stop | Puls deutlich tastbar
+15:54 | Elena | Atmung prüfen | Start | 
+16:04 | Elena | Atmung prüfen | Stop | 
+16:17 | Elena | Atemwegsverlegung prüfen | Start | 
+16:20 | Elena | Atemwegsverlegung prüfen | Stop | Atemwege frei
+16:40 | Elena | NPC beauftragen | Start | Medizin -> Blutdruckmanschette | Anlage rechts
+16:48 | Elena | NPC beauftragen | Start | Medizin -> CPR | 
+16:48 | Medizin | CPR | Start | 
+17:53 | Elena | NPC beauftragen | Start | Medizin -> Absaugen | 
+17:58 | Medizin | CPR | Stop | 
+17:58 | Elena | NPC beauftragen | Start | Medizin -> Beende Aktion
+18:10 | Elena | NPC beauftragen | Start | NPC rufen: Pflege ()
+18:29 | Elena | ReCap | Start | Rechts
+18:31 | Elena | ReCap | Stop | Normal
+18:40 | Elena | Blutentnahme | Start | Rechts
+19:31 | Elena | Blutentnahme | Warning | Nicht auf Desinfektion gewartet
+19:48 | Elena | Blutentnahme | Stop | BGA
+20:17 | Elena | NPC beauftragen | Start | Pflege -> Auskultation | 
+21:03 | Elena | NPC beauftragen | Start | Medizin -> Auskultation | 
+21:04 | Medizin | Auskultation | Start | 
+21:08 | Medizin | Auskultation | Info | Thorax okay
+21:11 | Medizin | Auskultation | Info | Abdomen okay
+21:12 | Medizin | Auskultation | Stop | 
+23:45 | Elena | Puls messen | Start | Femoralis
+23:55 | Elena | Puls messen | Stop | Puls deutlich tastbar
+24:10 | Elena | Blutentnahme | Start | Rechts
+24:31 | Elena | Blutentnahme | Warning | Nicht auf Desinfektion gewartet
+24:42 | Elena | Blutentnahme | Stop | Citrat
+25:05 | Elena | Atmung prüfen | Start | 
+25:15 | Elena | Atmung prüfen | Stop | 
+27:19 | Elena | Atemwegsverlegung prüfen | Start | 
+27:22 | Elena | Atemwegsverlegung prüfen | Stop | Atemwege frei
+28:04 | Elena | PVK | Start | Anlage rechts
+28:29 | Elena | PVK | Warning | Nicht auf Desinfektion gewartet
+28:38 | Elena | PVK | Stop | 
+28:43 | Elena | Palpation | Start | Langer Röhrenknochen rechts
+28:46 | Elena | Palpation | Stop | stabil
+28:53 | Elena | ReCap | Start | Rechts
+28:55 | Elena | ReCap | Stop | Normal
+29:04 | Elena | CPR | Start | 
+29:08 | Elena | CPR | Stop | 
+29:18 | Elena | Puls messen | Start | Femoralis
+29:28 | Elena | Puls messen | Stop | Puls deutlich tastbar
+29:47 | Elena | NPC beauftragen | Start | Pflege -> CT | 
+29:48 | Pflege | CT | Start | 
+29:48 | Elena | NPC beauftragen | Start | Pflege -> CT | 
+29:48 | Elena | NPC beauftragen | Start | Pflege -> CT | 
+30:08 | Pflege | CT | Stop | 
+30:08 | Pflege | CT | Start | 
+30:28 | Pflege | CT | Stop | 
+30:29 | Pflege | CT | Start | 
+30:49 | Pflege | CT | Stop | 
+31:00 | Elena | CPR | Start | 
+31:06 | Elena | CPR | Stop | 
+31:10 | Elena | Invasive Blutdruckmessung | Start | Anlage rechts
+32:50 | Elena | Invasive Blutdruckmessung | Warning | Nicht auf Anästhesie gewartet
+37:22 | Elena | NPC beauftragen | Start | Pflege -> Blutläufer | A+
+37:23 | Pflege | Blutläufer | Start | A+
+37:36 | Pflege | Blutläufer | Stop | 
+38:01 | Elena | NPC beauftragen | Start | Pflege -> Defibrillator | 
+38:01 | Pflege | Defibrillator | Start | Defibrillator angeschlossen
+38:12 | Pflege | Defibrillator | Stop | 
+39:08 | Elena | Invasive Blutdruckmessung | Abbrechen | 
+39:19 | Elena | Invasive Blutdruckmessung | Start | Anlage rechts
+39:23 | Elena | Invasive Blutdruckmessung | Abbrechen | 
+39:43 | Elena | PVK | Start | Anlage rechts
+39:43 | Elena | PVK | Abbrechen | PVK bereits vorhanden
+39:47 | Elena | Puls messen | Start | Radialis
+39:57 | Elena | Puls messen | Stop | Puls deutlich tastbar

@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.VSCode/
+
+# Ignore parsed data if you want, but for now we can commit it to share with the team
+# data/parsed/

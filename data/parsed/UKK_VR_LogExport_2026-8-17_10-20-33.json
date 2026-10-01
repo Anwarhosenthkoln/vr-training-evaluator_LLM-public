@@ -2,8 +2,8 @@
     {
         "id": 1,
         "wall_clock": null,
-        "sim_time": "﻿1:22",
-        "sim_time_seconds": 0,
+        "sim_time": "1:22",
+        "sim_time_seconds": 82,
         "actor": "Elena",
         "action_raw": "NPC beauftragen",
         "action_code": "DELEGATE_NPC",

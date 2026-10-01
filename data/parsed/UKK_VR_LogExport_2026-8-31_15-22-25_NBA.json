@@ -7,7 +7,8 @@
         "Ende": "15:31:40",
         "Dauer": "9:15",
         "Entscheidung": "Auf Station belassen",
-        "NPC Team": "-"
+        "NPC Team": "-",
+        "patient_summary": "Patient allzeit stabil"
     },
     "events": [
         {
@@ -17,7 +18,7 @@
             "sim_time_seconds": 60,
             "actor": "Siegrid",
             "action_raw": "Neurologische Untersuchung",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "NEURO_EXAM",
             "phase": "Start",
             "details": "Neurologische Untersuchung zu Beginn nicht sinnvoll, Ansprache und Atemkontrolle korrekt",
             "expert_comment": null
@@ -53,7 +54,7 @@
             "sim_time_seconds": 70,
             "actor": "Siegrid",
             "action_raw": "Neurologische Untersuchung",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "NEURO_EXAM",
             "phase": "Stop",
             "details": "Keine Anzeichen für eine Fazialisparese,",
             "expert_comment": null
@@ -173,7 +174,7 @@
             "sim_time_seconds": 189,
             "actor": "Siegrid",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Start",
             "details": "erst später sinnvoll",
             "expert_comment": null
@@ -185,7 +186,7 @@
             "sim_time_seconds": 192,
             "actor": "Siegrid",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Abbrechen",
             "details": "",
             "expert_comment": null
@@ -209,7 +210,7 @@
             "sim_time_seconds": 194,
             "actor": "Siegrid",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Start",
             "details": "",
             "expert_comment": null
@@ -305,7 +306,7 @@
             "sim_time_seconds": 254,
             "actor": "Siegrid",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Stop",
             "details": "",
             "expert_comment": null
@@ -636,5 +637,7 @@
             "sys_bp": 114,
             "dia_bp": 74
         }
-    ]
+    ],
+    "patient_talk": [],
+    "voice_control": []
 }

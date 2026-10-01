@@ -1,0 +1,58 @@
+{
+    "session_info": {
+        "Modul": "Station",
+        "Patient": "Hypoglykämie (Stufe 1)",
+        "Datum": "22.09.2026",
+        "Start": "13:41:25",
+        "Ende": "13:51:31",
+        "Dauer": "10:06",
+        "Entscheidung": "Intensivstation",
+        "NPC Team": "-"
+    },
+    "overall_score": 49,
+    "verdict": "Fail",
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 25
+        },
+        "D_Disability": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 35
+        },
+        "order": {
+            "points_deducted": 0
+        },
+        "timing": {
+            "points_deducted": 0
+        },
+        "critical_errors": {
+            "points_deducted": 0
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[C] Capillary refill / recap time was never assessed!",
+        "[C] Physician/medical staff was never contacted!",
+        "[C] FAST ultrasound was never performed!",
+        "[Safety Cap] Score capped at 49 -- a life-critical step (Airway/Breathing) was skipped or a critical error occurred, regardless of performance elsewhere."
+    ],
+    "critical_errors": []
+}

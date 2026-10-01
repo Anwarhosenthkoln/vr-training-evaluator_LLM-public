@@ -193,7 +193,7 @@
             "sim_time_seconds": 190,
             "actor": "Diane",
             "action_raw": "Neurologische Untersuchung",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "NEURO_EXAM",
             "phase": "Start",
             "details": "",
             "expert_comment": "korrekt"
@@ -217,7 +217,7 @@
             "sim_time_seconds": 193,
             "actor": "Diane",
             "action_raw": "Neurologische Untersuchung",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "NEURO_EXAM",
             "phase": "Stop",
             "details": "Keine Anzeichen für eine Fazialisparese,",
             "expert_comment": null
@@ -229,7 +229,7 @@
             "sim_time_seconds": 197,
             "actor": "Diane",
             "action_raw": "Wells/Genfer-Score",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "WELLS_GENEVA_SCORE",
             "phase": "Start",
             "details": "",
             "expert_comment": null
@@ -241,7 +241,7 @@
             "sim_time_seconds": 200,
             "actor": "Diane",
             "action_raw": "Wells/Genfer-Score",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "WELLS_GENEVA_SCORE",
             "phase": "Stop",
             "details": "Wells 7",
             "expert_comment": null
@@ -493,7 +493,7 @@
             "sim_time_seconds": 312,
             "actor": "Diane",
             "action_raw": "NPC beauftragen",
-            "action_code": "DELEGATE_UNKNOWN",
+            "action_code": "DELEGATE_ECG_12LEAD_APPLY",
             "phase": "Start",
             "details": "Robin -> EKG 12-Kanal",
             "expert_comment": null
@@ -505,7 +505,7 @@
             "sim_time_seconds": 318,
             "actor": "Diane",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Start",
             "details": "",
             "expert_comment": null
@@ -517,7 +517,7 @@
             "sim_time_seconds": 321,
             "actor": "Diane",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Stop",
             "details": "",
             "expert_comment": null
@@ -775,5 +775,7 @@
             "expert_comment": null
         }
     ],
-    "vital_parameters": []
+    "vital_parameters": [],
+    "patient_talk": [],
+    "voice_control": []
 }

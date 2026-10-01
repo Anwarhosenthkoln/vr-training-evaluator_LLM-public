@@ -1,0 +1,114 @@
+
+﻿Modul: Station
+Patient: Hypoglykämie (Stufe 1)
+Datum: 22.09.2026
+Start: 13:41:25
+Ende: 13:51:31
+Dauer: 10:06
+Entscheidung: Intensivstation
+NPC Team: -
+
+Aktion Log:
+13:41:59 | 0:34 | Character | Atmung prüfen | Start | 
+13:42:09 | 0:44 | Character | Atmung prüfen | Stop | 
+13:42:15 | 0:50 | Character | Puls messen | Start | Radialis
+13:42:25 | 1:00 | Character | Puls messen | Stop | Puls deutlich tastbar
+13:42:49 | 1:24 | Character | NPC beauftragen | Start | Robin -> Hole Gegenstand | Notfallkoffer, EKG, Monitor, Infusionsmaterial, Stationsmedikamente
+13:42:49 | 1:24 | Robin | Hole Gegenstand | Start | Notfallkoffer, EKG, Monitor, Infusionsmaterial, Stationsmedikamente
+13:43:06 | 1:40 | Character | GCS | Start | 
+13:43:16 | 1:50 | Character | GCS | Stop | GCS 11
+13:43:21 | 1:56 | Character | Neurologische Untersuchung | Start | 
+13:43:31 | 2:06 | Character | Neurologische Untersuchung | Stop | Keine Anzeichen für eine Fazialisparese,
+Arme können gehoben werden, Sprache normal
+13:43:42 | 2:17 | Character | Patient entkleiden | Start | 
+13:43:54 | 2:29 | Robin | Hole Gegenstand | Stop | 
+13:44:02 | 2:37 | Character | Patient entkleiden | Stop | 
+13:44:03 | 2:38 | Character | NPC beauftragen | Start | Charlie -> Blutentnahme | Serum, BGA, EDTA klein, Citrat
+13:44:04 | 2:39 | Charlie | Blutentnahme | Start | Serum, BGA, EDTA klein, Citrat
+13:44:12 | 2:47 | Character | Monitor anbauen | Start | 
+13:44:18 | 2:53 | Character | EKG 3-Kanal | Start | Anlage 3-Kanal
+13:44:23 | 2:58 | Character | Pulsoxymetrie | Start | Anlage Rechts
+13:44:23 | 2:58 | Character | Pulsoxymetrie | Start | Anlage Rechts
+13:44:29 | 3:03 | Character | Blutdruckmanschette | Start | Anlage rechts
+13:44:29 | 3:03 | Character | Blutdruckmanschette | Start | Anlage rechts
+13:44:45 | 3:20 | Charlie | Blutentnahme | Stop | 
+13:44:57 | 3:32 | Character | NPC beauftragen | Start | Robin -> PVK | Anlage links
+13:44:58 | 3:33 | Robin | PVK | Start | Anlage links
+13:44:58 | 3:33 | Character | Monitor anbauen | Stop | 
+13:45:21 | 3:56 | Character | NPC beauftragen | Start | Charlie -> BGA durchführen | 
+13:45:21 | 3:56 | Charlie | BGA durchführen | Start | 
+13:45:29 | 4:04 | Robin | PVK | Stop | 
+13:45:38 | 4:13 | Character | GCS | Start | 
+13:45:48 | 4:23 | Character | GCS | Stop | GCS 10
+13:46:16 | 4:51 | Character | NPC beauftragen | Start | Robin -> Hole Gegenstand | BZ Gerät, Thermometer, Stethoskop, Saft, Fruchtzucker
+13:46:17 | 4:52 | Robin | Hole Gegenstand | Start | BZ Gerät, Thermometer, Stethoskop, Saft, Fruchtzucker
+13:46:37 | 5:12 | Character | Infusion | Start | (Gabe) Vollelektrolytlösung, 500ml
+13:47:00 | 5:35 | Character | GCS | Start | 
+13:47:10 | 5:45 | Character | GCS | Stop | GCS 10
+13:47:17 | 5:52 | Character | Infusion | Stop | 
+13:47:23 | 5:58 | Robin | Hole Gegenstand | Stop | 
+13:47:29 | 6:04 | Character | NPC beauftragen | Start | Robin -> Temperatur messen | 
+13:47:30 | 6:05 | Robin | Temperatur messen | Start | 
+13:47:36 | 6:11 | Character | Temperatur messen | Start | 37,1°C 
+13:47:37 | 6:12 | Robin | Temperatur messen | Stop | 37,1°C 
+13:47:45 | 6:20 | Character | NPC beauftragen | Start | Robin -> Blutzucker messen | 
+13:47:46 | 6:21 | Robin | Blutzucker messen | Start | 
+13:47:56 | 6:31 | Charlie | BGA durchführen | Stop | 
+13:48:08 | 6:42 | Robin | Blutzucker messen | Stop | 28 mg/dL
+13:48:58 | 7:33 | Character | NPC beauftragen | Start | Charlie -> Gabe Traubenzucker/Saft | 
+13:48:59 | 7:33 | Charlie | Gabe Traubenzucker/Saft | Start | 
+13:49:20 | 7:55 | Charlie | Gabe Traubenzucker/Saft | Stop | 
+13:49:39 | 8:14 | Character | NPC beauftragen | Start | Robin -> Infusion | (Gabe) Glukoselösung 40%, 100ml
+13:49:39 | 8:14 | Robin | Infusion | Start | (Gabe) Glukoselösung 40%, 100ml
+13:49:49 | 8:24 | Character | NPC beauftragen | Start | Charlie -> EKG 12-Kanal | 
+13:49:49 | 8:24 | Charlie | EKG 12-Kanal | Start | 
+13:50:21 | 8:56 | Robin | Infusion | Stop | 
+13:50:51 | 9:26 | Charlie | EKG 12-Kanal | Stop | 
+13:51:18 | 9:53 | Character | Blutzucker messen | Start | 60 mg/dL
+
+Vital Log:
+Uhrzeit | Zeit | GCS | HR | RR | OXY | MEAN | SYS | DIA
+13:42:00 | 0:35 | 12 | 110 | 12 | 97 | 91 | 110 | 71
+13:42:30 | 1:05 | 11 | 110 | 12 | 97 | 91 | 110 | 71
+13:43:00 | 1:35 | 11 | 110 | 12 | 97 | 91 | 110 | 71
+13:43:30 | 2:05 | 11 | 110 | 12 | 97 | 91 | 110 | 71
+13:44:00 | 2:35 | 10 | 110 | 12 | 97 | 91 | 110 | 71
+13:44:30 | 3:05 | 10 | 110 | 12 | 97 | 91 | 110 | 71
+13:45:00 | 3:35 | 10 | 110 | 12 | 97 | 91 | 110 | 71
+13:45:30 | 4:05 | 10 | 110 | 12 | 97 | 91 | 111 | 71
+13:46:00 | 4:35 | 10 | 109 | 12 | 97 | 91 | 111 | 71
+13:46:30 | 5:05 | 10 | 109 | 12 | 97 | 91 | 111 | 71
+13:47:00 | 5:35 | 10 | 109 | 12 | 97 | 91 | 111 | 71
+13:47:30 | 6:05 | 11 | 109 | 12 | 97 | 91 | 111 | 71
+13:48:00 | 6:35 | 12 | 109 | 12 | 97 | 91 | 111 | 70
+13:48:30 | 7:05 | 14 | 109 | 12 | 97 | 92 | 112 | 71
+13:49:00 | 7:35 | 15 | 109 | 12 | 97 | 92 | 112 | 71
+13:49:30 | 8:05 | 15 | 109 | 12 | 97 | 91 | 111 | 70
+13:50:00 | 8:35 | 15 | 109 | 12 | 97 | 91 | 111 | 70
+13:50:30 | 9:05 | 15 | 109 | 12 | 97 | 91 | 111 | 70
+13:51:00 | 9:35 | 15 | 108 | 12 | 98 | 91 | 111 | 70
+13:51:30 | 10:05 | 15 | 108 | 12 | 98 | 91 | 111 | 70
+
+Patient Talk Log:
+13:41:37 | 0:12 | Sind Sie auch von der Pflege?
+13:43:17 | 1:52 | Gibt es heute noch Essen?
+13:45:17 | 3:52 | Wo bin ich?
+13:47:04 | 5:39 | Ich fühle mich so fürchterlich schwach.
+13:48:37 | 7:12 | Gibt es heute noch Essen?
+13:50:26 | 9:01 | Ich fühle mich so fürchterlich schwach.
+
+Voice Control Log:
+13:42:00 | 0:35 | Er spricht mit mir. Also A ist in Ordnung. B dann sehr wahrscheinlich auch. Kontrollieren wir mal.
+13:42:17 | 0:52 | Okay. Atmung ist in Ordnung. B ist in Ordnung. Dann C. Messen wir mal einen Puls.
+13:42:24 | 0:59 | Okay, ordentlich schnell und Tachykard.
+13:42:50 | 1:25 | EKG, weil er ist Tachykard.
+13:43:08 | 1:43 | NPC. A, B, C, D. Dann GCF.
+13:43:48 | 2:23 | 11. Okay. Gut. Einmal Patient entkleiden.
+13:43:56 | 2:31 | Du kannst jetzt erstmal Blutentnahme machen.
+13:45:21 | 3:56 | Charlie BGA durchführen.
+13:47:29 | 6:04 | Robin Temperatur messen.
+13:47:45 | 6:20 | Temperatur 37,1. Okay. Robin, Blutzucker messen.
+13:49:19 | 7:53 | Robin, Glucose 40% über linken PVK.
+13:49:30 | 8:05 | Robin, bitte verabreiche Glucose 40% über den PVK auf der rechten Seite.
+13:49:49 | 8:24 | Okay. Charlie 12 Kanal EKG.
+13:49:56 | 8:31 | Einfach nur zur Vollständigkeit.

@@ -1,0 +1,53 @@
+{
+    "session_info": {},
+    "overall_score": 33,
+    "verdict": "Fail",
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "B_Breathing": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 57
+        },
+        "D_Disability": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 56
+        },
+        "order": {
+            "points_deducted": 0
+        },
+        "timing": {
+            "points_deducted": 11
+        },
+        "critical_errors": {
+            "points_deducted": 0
+        }
+    },
+    "feedback": [
+        "[C] Physician/medical staff was never contacted!",
+        "[C] Monitoring incomplete, never applied: pulse oximetry, temperature.",
+        "[C] blood pressure cuff applied late at 671s (target < 600s).",
+        "[C] 3-lead ECG applied late at 609s (target < 600s).",
+        "[C] Venous access established late at 1684s (target < 1200s).",
+        "[C] Infusion was never started!",
+        "[C] Blood gas analysis (BGA) was never performed!",
+        "[C] FAST ultrasound was never performed!",
+        "[D] GCS / neurological status was never assessed!"
+    ],
+    "critical_errors": []
+}

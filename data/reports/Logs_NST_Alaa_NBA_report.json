@@ -1,0 +1,62 @@
+{
+    "session_info": {
+        "Modul": "Station",
+        "Patient": "Blutung (Stufe 3)",
+        "Dauer": "8:14",
+        "Entscheidung": "OP"
+    },
+    "overall_score": 2,
+    "verdict": "Fail",
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 13
+        },
+        "D_Disability": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 33
+        },
+        "order": {
+            "points_deducted": 10
+        },
+        "timing": {
+            "points_deducted": 0
+        },
+        "critical_errors": {
+            "points_deducted": 55
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[B] Breathing was not checked!",
+        "[C] Monitoring incomplete, never applied: temperature.",
+        "[C] Blood gas analysis (BGA) was never performed!",
+        "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:35)",
+        "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:42)",
+        "CRITICAL ERROR: Ketamine (anesthesia induction) given without indication on the normal ward! (Event at 6:49)",
+        "[Order] FAST ultrasound performed at 209s before the physical exam (palpation, at 225s) -- palpation should come first.",
+        "[Order] Pulse check performed at 58s before breathing was assessed (breathing was never checked)."
+    ],
+    "critical_errors": [
+        "WRONG_MED_CATECHOLAMINE",
+        "WRONG_MED_CATECHOLAMINE",
+        "UNINDICATED_ANESTHESIA_INDUCTION"
+    ]
+}

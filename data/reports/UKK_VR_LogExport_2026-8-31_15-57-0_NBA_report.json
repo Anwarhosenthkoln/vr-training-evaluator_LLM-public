@@ -1,0 +1,64 @@
+{
+    "session_info": {
+        "Modul": "Station",
+        "Patient": "Blutung (Stufe 3)",
+        "Datum": "31.08.2026",
+        "Start": "15:57:00",
+        "Ende": "16:03:57",
+        "Dauer": "6:56",
+        "Entscheidung": "OP",
+        "NPC Team": "-"
+    },
+    "overall_score": 22,
+    "verdict": "Fail",
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 13
+        },
+        "D_Disability": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 43
+        },
+        "order": {
+            "points_deducted": 5
+        },
+        "timing": {
+            "points_deducted": 0
+        },
+        "critical_errors": {
+            "points_deducted": 30
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[B] Breathing was not checked!",
+        "[C] Monitoring incomplete, never applied: temperature.",
+        "[C] Blood gas analysis (BGA) was never performed!",
+        "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!",
+        "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:33)",
+        "ERROR: Oxygen given at 6:17 while SpO2 was 99% (>96%, no indication).",
+        "[Order] Pulse check performed at 58s before breathing was assessed (breathing was never checked)."
+    ],
+    "critical_errors": [
+        "WRONG_MED_CATECHOLAMINE",
+        "OXYGEN_WITHOUT_INDICATION"
+    ]
+}

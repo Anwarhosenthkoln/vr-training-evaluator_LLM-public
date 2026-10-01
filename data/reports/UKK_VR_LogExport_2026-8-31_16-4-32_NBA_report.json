@@ -1,0 +1,64 @@
+{
+    "session_info": {
+        "Modul": "Station",
+        "Patient": "Lungenarterienembolie (Stufe 2)",
+        "Datum": "31.08.2026",
+        "Start": "16:04:32",
+        "Ende": "16:10:31",
+        "Dauer": "5:58",
+        "Entscheidung": "Koronarangiographie mit PCI",
+        "NPC Team": "-"
+    },
+    "overall_score": 17,
+    "verdict": "Fail",
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 13
+        },
+        "D_Disability": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 43
+        },
+        "order": {
+            "points_deducted": 5
+        },
+        "timing": {
+            "points_deducted": 0
+        },
+        "critical_errors": {
+            "points_deducted": 35
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[B] Breathing was not checked!",
+        "[C] Monitoring incomplete, never applied: temperature.",
+        "[C] Blood gas analysis (BGA) was never performed!",
+        "[D] GCS / neurological status was never assessed!",
+        "ERROR: Oxygen given at 3:52 while SpO2 was 98% (>96%, no indication).",
+        "CRITICAL ERROR: Decision recorded as 'Koronarangiographie mit PCI' -- PCI/coronary angiography was activated despite a suspected postoperative bleeding!",
+        "[Order] Pulse check performed at 35s before breathing was assessed (breathing was never checked)."
+    ],
+    "critical_errors": [
+        "OXYGEN_WITHOUT_INDICATION",
+        "WRONG_DECISION_PCI"
+    ]
+}

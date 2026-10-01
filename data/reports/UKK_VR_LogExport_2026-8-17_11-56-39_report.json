@@ -1,0 +1,52 @@
+{
+    "session_info": {},
+    "overall_score": 42,
+    "verdict": "Fail",
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 38
+        },
+        "D_Disability": {
+            "status": "Missed",
+            "points_deducted": 5
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 45
+        },
+        "order": {
+            "points_deducted": 5
+        },
+        "timing": {
+            "points_deducted": 8
+        },
+        "critical_errors": {
+            "points_deducted": 0
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[C] Pulse was not checked!",
+        "[C] Capillary refill / recap time was never assessed!",
+        "[C] Physician/medical staff was never contacted!",
+        "[C] temperature applied late at 824s (target < 600s).",
+        "[C] FAST ultrasound was never performed!",
+        "[D] GCS assessed late at 703s (target < 300s).",
+        "[Order] Palpation performed at 378s before breathing was assessed (breathing checked at 760s)."
+    ],
+    "critical_errors": []
+}

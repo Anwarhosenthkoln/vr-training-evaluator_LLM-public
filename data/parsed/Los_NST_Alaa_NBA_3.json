@@ -229,7 +229,7 @@
             "sim_time_seconds": 178,
             "actor": "Diane",
             "action_raw": "Wells/Genfer-Score",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "WELLS_GENEVA_SCORE",
             "phase": "Start",
             "details": "",
             "expert_comment": "korrekt"
@@ -253,7 +253,7 @@
             "sim_time_seconds": 181,
             "actor": "Diane",
             "action_raw": "Wells/Genfer-Score",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "WELLS_GENEVA_SCORE",
             "phase": "Stop",
             "details": "Wells 1",
             "expert_comment": null
@@ -811,5 +811,7 @@
             "expert_comment": null
         }
     ],
-    "vital_parameters": []
+    "vital_parameters": [],
+    "patient_talk": [],
+    "voice_control": []
 }

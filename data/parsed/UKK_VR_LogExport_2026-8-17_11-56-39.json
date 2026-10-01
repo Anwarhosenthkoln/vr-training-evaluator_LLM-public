@@ -479,7 +479,7 @@
         "sim_time_seconds": 681,
         "actor": "hennio",
         "action_raw": "Neurologische Untersuchung",
-        "action_code": "UNKNOWN_ACTION",
+        "action_code": "NEURO_EXAM",
         "phase": "Start",
         "details": ""
     },
@@ -490,7 +490,7 @@
         "sim_time_seconds": 691,
         "actor": "hennio",
         "action_raw": "Neurologische Untersuchung",
-        "action_code": "UNKNOWN_ACTION",
+        "action_code": "NEURO_EXAM",
         "phase": "Stop",
         "details": "Keine Anzeichen für eine Fazialisparese,"
     },
@@ -545,7 +545,7 @@
         "sim_time_seconds": 722,
         "actor": "Alaa",
         "action_raw": "Wells/Genfer-Score",
-        "action_code": "UNKNOWN_ACTION",
+        "action_code": "WELLS_GENEVA_SCORE",
         "phase": "Start",
         "details": ""
     },
@@ -567,7 +567,7 @@
         "sim_time_seconds": 732,
         "actor": "Alaa",
         "action_raw": "Wells/Genfer-Score",
-        "action_code": "UNKNOWN_ACTION",
+        "action_code": "WELLS_GENEVA_SCORE",
         "phase": "Stop",
         "details": "Wells 1"
     },
@@ -578,7 +578,7 @@
         "sim_time_seconds": 737,
         "actor": "hennio",
         "action_raw": "Wells/Genfer-Score",
-        "action_code": "UNKNOWN_ACTION",
+        "action_code": "WELLS_GENEVA_SCORE",
         "phase": "Start",
         "details": ""
     },
@@ -589,7 +589,7 @@
         "sim_time_seconds": 747,
         "actor": "hennio",
         "action_raw": "Wells/Genfer-Score",
-        "action_code": "UNKNOWN_ACTION",
+        "action_code": "WELLS_GENEVA_SCORE",
         "phase": "Stop",
         "details": "Wells 1"
     },

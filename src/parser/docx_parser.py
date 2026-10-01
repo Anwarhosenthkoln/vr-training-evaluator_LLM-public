@@ -24,17 +24,18 @@ except ImportError:
             return 0
 
 def parse_docx_log(filepath):
-    """Parses a VR .docx log, extracting actions, metadata, and vital parameters."""
+    """Parses a VR .docx log, extracting actions, metadata, vital parameters, and speech logs."""
     doc = Document(filepath)
     
     session_data = {
         "metadata": {},
         "events": [],
-        "vital_parameters": []
+        "vital_parameters": [],
+        "patient_talk": [],
+        "voice_control": []
     }
     
-    current_section = "metadata" # can be 'metadata', 'aktion_log', 'vital_log'
-    vitals_headers = []
+    current_section = "metadata"
     
     for paragraph in doc.paragraphs:
         line = paragraph.text.strip()
@@ -42,28 +43,34 @@ def parse_docx_log(filepath):
             continue
             
         # Section detection
-        if "Aktion Log" in line or line.strip() == "Log:":
+        lower_line = line.lower().strip().rstrip(':')
+        if "aktion log" in lower_line or line.strip() == "Log:":
             current_section = "aktion_log"
             continue
-        elif "Vital Log" in line or "Uhrzeit | Zeit |" in line:
+        elif "vital log" in lower_line or "Uhrzeit | Zeit |" in line:
             current_section = "vital_log"
-            # Extract headers from the line if it looks like the header row
-            if "|" in line and "HR" in line:
-                vitals_headers = [h.strip() for h in line.split("|")]
+            continue
+        elif "patient talk log" in lower_line:
+            current_section = "patient_talk_log"
+            continue
+        elif "voice control log" in lower_line:
+            current_section = "voice_control_log"
+            continue
+        # Also catch "Patient allzeit stabil" or similar summary lines
+        elif line.startswith("Patient allzeit") or line.startswith("Patient all"):
+            session_data["metadata"]["patient_summary"] = line
             continue
             
         # Parse based on current section
         if current_section == "metadata":
-            if ":" in line:
+            if ":" in line and "|" not in line:
                 parts = line.split(":", 1)
                 session_data["metadata"][parts[0].strip()] = parts[1].strip()
                 
         elif current_section == "aktion_log":
-            # Very similar to txt parser
             if "|" in line:
                 parts = [p.strip() for p in line.split('|')]
-                # Format: 15:28:50 | 6:25 | Charlie | BGA durchführen | Start | ...
-                if len(parts) >= 5 and re.match(r'\d{2}:\d{2}:\d{2}', parts[0]):
+                if len(parts) >= 5 and re.match(r'\d{1,2}:\d{2}:\d{2}', parts[0]):
                     wall_clock = parts[0]
                     sim_time_raw = parts[1]
                     actor = parts[2]
@@ -79,11 +86,9 @@ def parse_docx_log(filepath):
                             action_code = f"DELEGATE_{ACTION_MAP.get(delegated_action, 'UNKNOWN')}"
 
                     expert_comment = None
-                    # Try to extract the doctor's inline comment, which often appears at the end in parentheses
                     comment_match = re.search(r'\(([^)]+)\)$', details.strip())
                     if comment_match:
                         comment_text = comment_match.group(1).strip()
-                        # Verify it looks like a real comment (e.g. contains 'richtig', 'falsch', or is long enough)
                         if len(comment_text) > 5 or any(k in comment_text.lower() for k in ["richtig", "falsch", "korrekt"]):
                             expert_comment = comment_text
                             details = details[:comment_match.start()].strip()
@@ -102,14 +107,10 @@ def parse_docx_log(filepath):
                     })
 
         elif current_section == "vital_log":
-            # Format: 15:23:00 | 0:35 | 14 | 72 | 12 | 97 | 95 | 114 | 74 
-            if "|" in line and re.match(r'\d{2}:\d{2}:\d{2}', line.split("|")[0].strip()):
+            if "|" in line and re.match(r'\d{1,2}:\d{2}:\d{2}', line.split("|")[0].strip()):
                 parts = [p.strip() for p in line.split('|')]
-                
-                # Check if this matches our expected columns (approx 9 columns)
-                # Uhrzeit | Zeit | GCS | HR | RR | OXY | MEAN | SYS | DIA
                 if len(parts) >= 9:
-                    vital_entry = {
+                    session_data["vital_parameters"].append({
                         "wall_clock": parts[0],
                         "sim_time": parts[1],
                         "sim_time_seconds": parse_time_to_seconds(parts[1]),
@@ -120,8 +121,29 @@ def parse_docx_log(filepath):
                         "map": int(parts[6]) if parts[6].isdigit() else None,
                         "sys_bp": int(parts[7]) if parts[7].isdigit() else None,
                         "dia_bp": int(parts[8]) if parts[8].isdigit() else None,
-                    }
-                    session_data["vital_parameters"].append(vital_entry)
+                    })
+
+        elif current_section == "patient_talk_log":
+            if "|" in line:
+                parts = [p.strip() for p in line.split('|')]
+                if len(parts) >= 3 and re.match(r'\d{1,2}:\d{2}:\d{2}', parts[0]):
+                    session_data["patient_talk"].append({
+                        "wall_clock": parts[0],
+                        "sim_time": parts[1],
+                        "sim_time_seconds": parse_time_to_seconds(parts[1]),
+                        "text": parts[2]
+                    })
+
+        elif current_section == "voice_control_log":
+            if "|" in line:
+                parts = [p.strip() for p in line.split('|')]
+                if len(parts) >= 3 and re.match(r'\d{1,2}:\d{2}:\d{2}', parts[0]):
+                    session_data["voice_control"].append({
+                        "wall_clock": parts[0],
+                        "sim_time": parts[1],
+                        "sim_time_seconds": parse_time_to_seconds(parts[1]),
+                        "text": parts[2]
+                    })
 
     return session_data
 

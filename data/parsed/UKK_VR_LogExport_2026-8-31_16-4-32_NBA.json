@@ -209,7 +209,7 @@
             "sim_time_seconds": 145,
             "actor": "Siegrid",
             "action_raw": "Neurologische Untersuchung",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "NEURO_EXAM",
             "phase": "Start",
             "details": "korrekt aber könnte auch nachrangig erfolgen",
             "expert_comment": null
@@ -233,7 +233,7 @@
             "sim_time_seconds": 155,
             "actor": "Siegrid",
             "action_raw": "Neurologische Untersuchung",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "NEURO_EXAM",
             "phase": "Stop",
             "details": "Keine Anzeichen für eine Fazialisparese,",
             "expert_comment": null
@@ -317,7 +317,7 @@
             "sim_time_seconds": 174,
             "actor": "Siegrid",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Start",
             "details": "",
             "expert_comment": null
@@ -389,7 +389,7 @@
             "sim_time_seconds": 234,
             "actor": "Siegrid",
             "action_raw": "EKG 12-Kanal",
-            "action_code": "UNKNOWN_ACTION",
+            "action_code": "ECG_12LEAD_APPLY",
             "phase": "Stop",
             "details": "",
             "expert_comment": null
@@ -612,5 +612,26 @@
             "sys_bp": 90,
             "dia_bp": 62
         }
-    ]
+    ],
+    "patient_talk": [
+        {
+            "wall_clock": "16:05:00",
+            "sim_time": "0:27",
+            "sim_time_seconds": 27,
+            "text": "Ich habe mich schon versucht aufzusetzen, weil ich so schwer Luft bekomme, aber mir wird ganz schwindelig."
+        },
+        {
+            "wall_clock": "16:07:00",
+            "sim_time": "2:27",
+            "sim_time_seconds": 147,
+            "text": "Ich habe das Gefühl, mein Herz rast."
+        },
+        {
+            "wall_clock": "16:08:37",
+            "sim_time": "4:04",
+            "sim_time_seconds": 244,
+            "text": "Hilfe, das tut so weh!"
+        }
+    ],
+    "voice_control": []
 }

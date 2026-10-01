@@ -1,0 +1,63 @@
+{
+    "session_info": {
+        "Modul": "Station",
+        "Patient": "Gesund (Stufe 1)",
+        "Datum": "31.08.2026",
+        "Start": "15:22:25",
+        "Ende": "15:31:40",
+        "Dauer": "9:15",
+        "Entscheidung": "Auf Station belassen",
+        "NPC Team": "-",
+        "patient_summary": "Patient allzeit stabil"
+    },
+    "overall_score": 27,
+    "verdict": "Fail",
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 38
+        },
+        "D_Disability": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 68
+        },
+        "order": {
+            "points_deducted": 5
+        },
+        "timing": {
+            "points_deducted": 0
+        },
+        "critical_errors": {
+            "points_deducted": 0
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[B] Breathing was not checked!",
+        "[C] Pulse was not checked!",
+        "[C] Capillary refill / recap time was never assessed!",
+        "[C] Monitoring incomplete, never applied: temperature.",
+        "[C] Infusion was never started!",
+        "[C] FAST ultrasound was never performed!",
+        "[D] GCS / neurological status was never assessed!",
+        "[Order] Palpation performed at 184s before breathing was assessed (breathing was never checked)."
+    ],
+    "critical_errors": []
+}

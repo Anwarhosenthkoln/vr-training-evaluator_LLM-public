@@ -4,98 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VR Medical Evaluator</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="dashboard">
         <header>
             <h1>🩺 VR Evaluation Dashboard</h1>
-            <p id="student-name">Loading session data...</p>
+            <p id="session-info">Loading session data...</p>
         </header>
 
+        <div class="report-selector">
+            <label for="report-select">Select Student Session:</label>
+            <select id="report-select">
+                <option value="Logs_NST_Alaa_NBA_report.json">Logs_NST_Alaa_NBA</option>
+                <option value="Log_NST_Alaa_NBA_2_report.json">Log_NST_Alaa_NBA_2</option>
+                <option value="Los_NST_Alaa_NBA_3_report.json">Los_NST_Alaa_NBA_3</option>
+                <option value="Log_1_with_time_stamp_report.json">Log_1_with_time_stamp</option>
+                <option value="UKK_VR_LogExport_2026-8-17_10-20-33_report.json">UKK 17.08.2026 – 10:20:33</option>
+                <option value="UKK_VR_LogExport_2026-8-17_10-32-3_report.json">UKK 17.08.2026 – 10:32:03</option>
+                <option value="UKK_VR_LogExport_2026-8-17_11-56-39_report.json">UKK 17.08.2026 – 11:56:39</option>
+                <option value="UKK_VR_LogExport_2026-8-17_11-57-57_report.json">UKK 17.08.2026 – 11:57:57</option>
+                <option value="UKK_VR_LogExport_2026-8-31_15-22-25_NBA_report.json">UKK 31.08.2026 – 15:22:25 (NBA)</option>
+                <option value="UKK_VR_LogExport_2026-8-31_15-57-0_NBA_report.json">UKK 31.08.2026 – 15:57:00 (NBA)</option>
+                <option value="UKK_VR_LogExport_2026-8-31_16-4-32_NBA_report.json">UKK 31.08.2026 – 16:04:32 (NBA)</option>
+                <option value="UKK_VR_LogExport_Stufe 2-Hypoglykämie_Test 2_report.json">Stufe 2 – Hypoglykämie Test 2</option>
+            </select>
+        </div>
+
+        <p id="load-error" class="load-error" hidden></p>
+
         <div class="grid">
-            <!-- Score Card -->
             <div class="card score-card">
                 <h2>Total Score</h2>
-                <div class="score-circle">
-                    <span id="overall-score">--</span>
+                <div class="score-circle-container">
+                    <svg class="progress-ring" width="150" height="150">
+                        <circle class="progress-ring__circle-bg" stroke="#e5e7eb" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
+                        <circle class="progress-ring__circle" stroke="#3b82f6" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
+                    </svg>
+                    <div class="score-value">
+                        <span id="total-score">--</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- ABCDE Breakdowns -->
             <div class="card abcde-card">
                 <h2>Emergency Scheme (ABCDE)</h2>
-                <ul id="abcde-list">
-                    <li>Parsing reports...</li>
+                <ul id="abcde-list" class="list-container">
+                    <li>Loading report...</li>
                 </ul>
             </div>
 
-            <!-- Feedback & Errors -->
             <div class="card feedback-card">
                 <h2>Feedback Log</h2>
-                <ul id="feedback-list">
-                    <!-- Javascript will populate this -->
-                </ul>
+                <ul id="feedback-list" class="list-container"></ul>
             </div>
-            
+
             <div class="card errors-card">
                 <h2>Critical Errors</h2>
-                <ul id="errors-list">
-                    <!-- Javascript will populate this -->
-                </ul>
+                <ul id="critical-errors-list" class="list-container"></ul>
             </div>
         </div>
     </div>
 
-    <!-- Script to simulate fetching Persona B's JSON data -->
-    <script>
-        // Person C: Note! Browsers block local file fetching (CORS issues). 
-        // For local development, it's easier to mock data here directly,
-        // or run a simple python server `python -m http.server 8000`
-        const mockReportData = {
-            "session_info": { "Modul": "Station", "Dauer": "8:14" },
-            "overall_score": 55,
-            "abcde_breakdown": {
-                "A_Airway": {"status": "Passed", "points_deducted": 0},
-                "B_Breathing": {"status": "Missed", "points_deducted": 10},
-                "C_Circulation": {"status": "Passed", "points_deducted": 0}
-            },
-            "feedback": [
-                "Airway was checked successfully.",
-                "[Time Warning] Monitoring started at 640s. Target is < 600s.",
-                "CRITICAL ERROR: Adrenalin cannot be given on the normal ward! (Event at 6:35)"
-            ],
-            "critical_errors": [
-                "MISSING_B_ASSESSMENT",
-                "WRONG_MED_CATECHOLAMINE"
-            ]
-        };
-
-        function renderReport(report) {
-            document.getElementById('student-name').innerText = `Session: ${report.session_info.Modul || 'Unknown'} | Time: ${report.session_info.Dauer || 'Unknown'}`;
-            document.getElementById('overall-score').innerText = report.overall_score;
-            
-            // Render ABCDE
-            const abcdeHTML = Object.entries(report.abcde_breakdown).map(([key, value]) => `
-                <li class="${value.status === 'Passed' ? 'pass' : 'fail'}">
-                    <strong>${key}:</strong> ${value.status}
-                </li>
-            `).join('');
-            document.getElementById('abcde-list').innerHTML = abcdeHTML;
-
-            // Render Feedback
-            const feedbackHTML = report.feedback.map(text => `<li>${text}</li>`).join('');
-            document.getElementById('feedback-list').innerHTML = feedbackHTML;
-
-            // Render Errors
-            const errorsHTML = report.critical_errors.map(err => `<li>${err}</li>`).join('');
-            document.getElementById('errors-list').innerHTML = errorsHTML;
-        }
-
-        // Render mock data to start
-        renderReport(mockReportData);
-    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>

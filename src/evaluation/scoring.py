@@ -1,5 +1,5 @@
 # Scoring infrastructure: tunable numbers + generic helpers, kept separate from
-# the clinical rule checks in newengine.py. Time limits come from
+# the clinical rule checks in engine.py. Time limits come from
 # "Ablauf_Notfall auf Normalstation_NBA.docx"; every point value below is our
 # own placeholder scale, pending the doctor's sign-off -- tune freely.
 

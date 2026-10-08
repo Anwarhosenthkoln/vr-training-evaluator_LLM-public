@@ -45,6 +45,8 @@ ACTION_MAP = {
     "Troponin T messen": "TROPONIN_CHECK",
     "Neurologische Untersuchung": "NEURO_EXAM",
     "Wells/Genfer-Score": "WELLS_GENEVA_SCORE",
+    "Transfusion einleiten": "BLOOD_TRANSFUSION",
+    "Beende Aktion": "CANCEL_ACTION",
 }
 
 def parse_time_to_seconds(time_str):

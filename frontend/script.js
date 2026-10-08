@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const reportSelect = document.getElementById('report-select');
     loadReport(reportSelect.value);
     reportSelect.addEventListener('change', (event) => loadReport(event.target.value));
+
+    document.getElementById('download-pdf-btn').addEventListener('click', generatePDF);
 });
 
 async function loadReport(filename) {
@@ -35,6 +37,9 @@ async function loadReport(filename) {
 function populateDashboard(report, filename) {
     hideError();
 
+    window.currentReport = report;
+    window.currentFilename = filename;
+
     const info = report.session_info || {};
     const parts = [
         `Session: ${info.Modul || filename.replace('_report.json', '')}`,
@@ -45,6 +50,45 @@ function populateDashboard(report, filename) {
     setText('session-info', parts.join(' | '));
 
     animateScore(Number(report.overall_score) || 0);
+
+    // Verdict Badge
+    const verdict = document.getElementById('verdict-badge');
+    verdict.textContent = `Verdict: ${report.verdict || 'Unknown'}`;
+    verdict.className = `verdict-badge ${(report.verdict || '').toLowerCase()}`;
+
+    // Coverage Card
+    const cov = report.coverage || {};
+    setText('cov-total', cov.total_actions || 0);
+    setText('cov-eval', cov.evaluated_actions || 0);
+    setText('cov-unknown', cov.unknown_actions || 0);
+    setText('cov-percent-text', `${cov.coverage_percent || 0}% Covered`);
+    document.getElementById('coverage-progress').style.width = `${cov.coverage_percent || 0}%`;
+    
+    const unknownList = document.getElementById('unknown-list');
+    unknownList.replaceChildren();
+    if (cov.unknown_action_list && cov.unknown_action_list.length > 0) {
+        cov.unknown_action_list.forEach(a => {
+            const li = document.createElement('li');
+            li.textContent = a;
+            unknownList.append(li);
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = "None. Awesome!";
+        li.className = "empty text-green";
+        unknownList.append(li);
+    }
+
+    // Score Breakdown
+    const breakdownList = document.getElementById('score-breakdown-list');
+    breakdownList.replaceChildren();
+    const sb = report.score_breakdown || {};
+    for (const [category, pts] of Object.entries(sb)) {
+        const li = document.createElement('li');
+        li.textContent = `${category.replace('_', ' ')}: -${pts} pts`;
+        if (pts > 0) li.className = 'fail';
+        breakdownList.append(li);
+    }
 
     const abcdeList = document.getElementById('abcde-list');
     abcdeList.replaceChildren();
@@ -140,4 +184,54 @@ function hideError() {
 
 function setText(id, text) {
     document.getElementById(id).textContent = text;
+}
+
+function generatePDF() {
+    if (!window.currentReport) return;
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const r = window.currentReport;
+    
+    // Add title
+    doc.setFontSize(18);
+    doc.text("VR Medical Evaluation Report", 105, 20, { align: "center" });
+    
+    doc.setFontSize(12);
+    let y = 40;
+    
+    doc.text(`File: ${window.currentFilename}`, 10, y); y+=10;
+    doc.text(`Score: ${r.overall_score} / 100 (${r.verdict})`, 10, y); y+=20;
+    
+    doc.setFontSize(14);
+    doc.text("Coverage:", 10, y); y+=7;
+    doc.setFontSize(11);
+    const c = r.coverage || {};
+    doc.text(`Total Actions: ${c.total_actions}, Evaluated: ${c.evaluated_actions}, Unknown: ${c.unknown_actions} (${c.coverage_percent}%)`, 10, y); y+=15;
+    
+    doc.setFontSize(14);
+    doc.text("Feedback:", 10, y); y+=7;
+    doc.setFontSize(10);
+    (r.feedback || []).forEach(f => {
+        let lines = doc.splitTextToSize("- " + f, 180);
+        doc.text(lines, 10, y);
+        y += lines.length * 5;
+        if (y > 280) { doc.addPage(); y = 20; }
+    });
+    y+=10;
+    
+    doc.setFontSize(14);
+    doc.text("Critical Errors:", 10, y); y+=7;
+    doc.setFontSize(10);
+    if (!r.critical_errors || r.critical_errors.length === 0) {
+        doc.text("None", 10, y); y+=7;
+    } else {
+        r.critical_errors.forEach(f => {
+            let lines = doc.splitTextToSize("- " + f, 180);
+            doc.text(lines, 10, y);
+            y += lines.length * 5;
+            if (y > 280) { doc.addPage(); y = 20; }
+        });
+    }
+    
+    doc.save(`Evaluation_${window.currentFilename.replace('.json', '')}.pdf`);
 }

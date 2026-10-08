@@ -49,6 +49,25 @@ def evaluate_session(parsed_session_path, output_report_path):
 
     report = new_report(metadata)
 
+    # --- Coverage Statistics ---
+    # Only count Start/Info phase to avoid double-counting Stop/Cancel phases for same action
+    start_events = [e for e in events if e.get("phase", "Start") in ("Start", "Info")]
+    total_actions = len(start_events)
+    unknown_events = [e for e in start_events if "UNKNOWN" in e.get("action_code", "")]
+    unknown_actions = len(unknown_events)
+    evaluated_actions = total_actions - unknown_actions
+    
+    report["coverage"]["total_actions"] = total_actions
+    report["coverage"]["evaluated_actions"] = evaluated_actions
+    report["coverage"]["unknown_actions"] = unknown_actions
+    
+    unique_unknowns = sorted(list(set(e.get("action_raw", "") for e in unknown_events)))
+    report["coverage"]["unknown_action_list"] = unique_unknowns
+    if total_actions > 0:
+        report["coverage"]["coverage_percent"] = round((evaluated_actions / total_actions) * 100, 1)
+    else:
+        report["coverage"]["coverage_percent"] = 0.0
+
     # --- A: Airway ---
     if has_event(events, ["CHECK_AIRWAY"]):
         report["abcde_breakdown"]["A_Airway"]["status"] = "Passed"

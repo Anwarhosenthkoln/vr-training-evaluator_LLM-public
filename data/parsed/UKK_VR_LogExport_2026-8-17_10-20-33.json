@@ -512,7 +512,7 @@
         "sim_time_seconds": 1078,
         "actor": "Elena",
         "action_raw": "NPC beauftragen",
-        "action_code": "DELEGATE_UNKNOWN_ACTION",
+        "action_code": "DELEGATE_CANCEL_ACTION",
         "phase": "Start",
         "details": "Medizin -> Beende Aktion"
     },

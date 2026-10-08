@@ -1,0 +1,575 @@
+[
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "0:02",
+        "action_raw": "NPC beauftragen",
+        "details": "NPC rufen: Pflege ()",
+        "expert_comment": "richtige Entscheidung; bei unsicherheit Verstärkung anfordern",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "0:43",
+        "action_raw": "Patient entkleiden",
+        "details": "",
+        "expert_comment": "korrekte Entscheidung die Patientin zu entkleiden, um Atmung und Puls kontrollieren zu können",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "0:58",
+        "action_raw": "Puls messen",
+        "details": "Carotis",
+        "expert_comment": "Puls fühlen grundsätzlich richtig, vorherige Kontrolle der Atmung eigentlich notwendig",
+        "doc_verdict": "correct",
+        "engine_flags": [
+            "[Order] Pulse check performed at 58s before breathing was assessed (breathing was never checked)."
+        ],
+        "match": false
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "1:55",
+        "action_raw": "GCS",
+        "details": "",
+        "expert_comment": "korrekte Entscheidung",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "1:58",
+        "action_raw": "GCS",
+        "details": "GCS 12",
+        "expert_comment": "leicht eingeschränkter GCS = potentieller Notfall",
+        "doc_verdict": "neutral",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "2:12",
+        "action_raw": "Monitor anbauen",
+        "details": "",
+        "expert_comment": "richtig",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "2:12",
+        "action_raw": "Blutdruckmanschette",
+        "details": "Anlage rechts",
+        "expert_comment": "richtig, zeitnahe RR-Messung C=Circulation",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "2:13",
+        "action_raw": "Pulsoxymetrie",
+        "details": "Anlage Rechts",
+        "expert_comment": "richtig, besser Pulsoxymetrie vor RR-Messung, B=Breathing",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "2:13",
+        "action_raw": "Puls messen",
+        "details": "Puls schwach",
+        "expert_comment": "weder richtig noch falsch",
+        "doc_verdict": "incorrect",
+        "engine_flags": [
+            "[Order] Pulse check performed at 58s before breathing was assessed (breathing was never checked)."
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "2:13",
+        "action_raw": "EKG 3-Kanal",
+        "details": "Anlage 3-Kanal",
+        "expert_comment": "richtig, C=Circulation",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "2:28",
+        "action_raw": "Sauerstoffgabe",
+        "details": "Anlage Nasenbrille",
+        "expert_comment": "grundsätzloch richtig, bei V.a. kritischen Patientenzustand hätte dies bereit früher erfolgen müssen",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [],
+        "match": false
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "3:03",
+        "action_raw": "Medikament",
+        "details": "(Vorbereiten) Noradrenalin 20,0 µg",
+        "expert_comment": "Perfusor",
+        "doc_verdict": "neutral",
+        "engine_flags": [
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:35)",
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:42)"
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "3:23",
+        "action_raw": "Sauerstoffgabe",
+        "details": "Fluss 9,4",
+        "expert_comment": "Erhöhung Sauerstofffluss richtig, hätte allerdings bereits bei kritischem Patientenzustand erfolgen sollen",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [],
+        "match": false
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "3:29",
+        "action_raw": "Ultraschall",
+        "details": "",
+        "expert_comment": "richtig, jedoch erst nach körperlicher Untersuchung -> Palpation",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [
+            "[Order] FAST ultrasound performed at 209s before the physical exam (palpation, at 225s) -- palpation should come first."
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "3:45",
+        "action_raw": "Palpation",
+        "details": "Abdomen",
+        "expert_comment": "richtig, hätte jedoch früher erfolgen müssen, am besten im Rahmen des ersten ABCDE unter C",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [
+            "[Order] FAST ultrasound performed at 209s before the physical exam (palpation, at 225s) -- palpation should come first."
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "4:24",
+        "action_raw": "Palpation",
+        "details": "Thorax",
+        "expert_comment": "richtig, hätte jedoch bereits im 1. ABCDE-Schema erfolgen müssen -> unter B",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [],
+        "match": false
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "4:30",
+        "action_raw": "ReCap",
+        "details": "Rechts",
+        "expert_comment": "richtig, hätte bereits beim ersten ABCDE erfolgen sollen, unter C=Circulation",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [],
+        "match": false
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "5:19",
+        "action_raw": "Medikament",
+        "details": "(Vorbereiten) Noradrenalin 20,0 µg",
+        "expert_comment": "Perfusor",
+        "doc_verdict": "neutral",
+        "engine_flags": [
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:35)",
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:42)"
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "5:46",
+        "action_raw": "Medikament",
+        "details": "(Vorbereiten) Ketamin-S 85,0 mg",
+        "expert_comment": "Perfusor",
+        "doc_verdict": "neutral",
+        "engine_flags": [
+            "CRITICAL ERROR: Ketamine (anesthesia induction) given without indication on the normal ward! (Event at 6:49)"
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "5:54",
+        "action_raw": "Medikament",
+        "details": "(Vorbereiten) Adrenalin 2,5 mg",
+        "expert_comment": "Perfusor",
+        "doc_verdict": "neutral",
+        "engine_flags": [
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:35)",
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:42)"
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "6:04",
+        "action_raw": "GCS",
+        "details": "",
+        "expert_comment": "Kontrolle im Verlauf richtig",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "6:18",
+        "action_raw": "Infusion",
+        "details": "(Vorbereiten) Vollelektrolytlösung, 1000ml",
+        "expert_comment": "Gabe von Volumen richtig",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "6:35",
+        "action_raw": "Medikament",
+        "details": "Adrenalin 2,5 mg (Perfusor)",
+        "expert_comment": "Adrenalingabe an der Stelle falsch",
+        "doc_verdict": "incorrect",
+        "engine_flags": [
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:35)",
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:42)"
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "6:42",
+        "action_raw": "Medikament",
+        "details": "Noradrenalin 20,0 µg (Perfusor)",
+        "expert_comment": "bereits vorbereitet und gegeben",
+        "doc_verdict": "neutral",
+        "engine_flags": [
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:35)",
+            "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:42)"
+        ],
+        "match": true
+    },
+    {
+        "file": "Logs_NST_Alaa_NBA.json",
+        "sim_time": "6:49",
+        "action_raw": "Medikament",
+        "details": "Ketamin-S 85,0 mg (Perfusor)",
+        "expert_comment": "falsch, keine Narkoseinduktion notwendig",
+        "doc_verdict": "incorrect",
+        "engine_flags": [
+            "CRITICAL ERROR: Ketamine (anesthesia induction) given without indication on the normal ward! (Event at 6:49)"
+        ],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "1:59",
+        "action_raw": "NPC beauftragen",
+        "details": "NPC rufen: Pflege",
+        "expert_comment": "korrekt, Unterstützung rufen",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "2:12",
+        "action_raw": "Patient entkleiden",
+        "details": "",
+        "expert_comment": "korrekt, Entkleidung vor Untersuchung im Notfall",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "2:32",
+        "action_raw": "Hole Gegenstand",
+        "details": "Notfallkoffer, EKG, Ultraschall, Monitor, Infusionsmaterial",
+        "expert_comment": "korrekt, zeitnah Equipment und Unterstützung",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "2:44",
+        "action_raw": "Palpation",
+        "details": "Thorax",
+        "expert_comment": "richtig, allerdings sollte vorher Ansprache des Patienten und Kontrolle der Atmung erfolgen",
+        "doc_verdict": "correct",
+        "engine_flags": [
+            "[Order] Palpation performed at 164s before breathing was assessed (breathing was never checked)."
+        ],
+        "match": false
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "2:54",
+        "action_raw": "Palpation",
+        "details": "Abdomen",
+        "expert_comment": "(korrekt, Abdomen wird nach Thorax untersucht",
+        "doc_verdict": "correct",
+        "engine_flags": [
+            "[Order] Palpation performed at 164s before breathing was assessed (breathing was never checked)."
+        ],
+        "match": false
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "3:03",
+        "action_raw": "GCS",
+        "details": "",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "3:10",
+        "action_raw": "Neurologische Untersuchung",
+        "details": "",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "3:23",
+        "action_raw": "ReCap",
+        "details": "Rechts",
+        "expert_comment": "korrekt, hätte allerdings unter C parallel zur Abdomenuntersuchung erfolgen sollen",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [],
+        "match": false
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "3:48",
+        "action_raw": "Monitor anbauen",
+        "details": "",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "4:08",
+        "action_raw": "Infusion",
+        "details": "(Vorbereiten) Vollelektrolytlösung, 1000ml",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "4:14",
+        "action_raw": "Sauerstoffgabe",
+        "details": "Anlage Sauerstoffmaske",
+        "expert_comment": "korrekt, hätte allerdings schon bei V.a. instabilen Patienten zu Beginn erfolgen sollne",
+        "doc_verdict": "correct but late/order issue",
+        "engine_flags": [],
+        "match": false
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "4:22",
+        "action_raw": "Sauerstoffgabe",
+        "details": "Fluss 7,2",
+        "expert_comment": "bei V.a. instabilen Patienten sollte ein Fluss > 12L via Maske gewählt werden",
+        "doc_verdict": "neutral",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "6:41",
+        "action_raw": "Infusion",
+        "details": "(Gabe) Vollelektrolytlösung, 1000ml",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Log_NST_Alaa_NBA_2.json",
+        "sim_time": "7:23",
+        "action_raw": "Blutentnahme",
+        "details": "BSG, Serum, BGA, EDTA klein, EDTA groß, Citrat",
+        "expert_comment": "korrekt insbesondere Blutgasanalyse wichtig",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "0:58",
+        "action_raw": "Puls messen",
+        "details": "Radialis",
+        "expert_comment": "korrekt, peripher Puls tasten",
+        "doc_verdict": "correct",
+        "engine_flags": [
+            "[Order] Pulse check performed at 58s before breathing was assessed (breathing checked at 159s)."
+        ],
+        "match": false
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "1:59",
+        "action_raw": "NPC beauftragen",
+        "details": "NPC rufen: Medizin ()",
+        "expert_comment": "korrekt, frühzeitig hilfe holen",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "2:19",
+        "action_raw": "Palpation",
+        "details": "Thorax",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "2:25",
+        "action_raw": "Palpation",
+        "details": "Abdomen",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "2:30",
+        "action_raw": "Patient entkleiden",
+        "details": "",
+        "expert_comment": "korrekt, besser körperlicher Untersuchung",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "2:53",
+        "action_raw": "GCS",
+        "details": "",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "2:58",
+        "action_raw": "Wells/Genfer-Score",
+        "details": "",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "3:01",
+        "action_raw": "Monitor anbauen",
+        "details": "",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "3:21",
+        "action_raw": "Pulsoxymetrie",
+        "details": "Anlage Links",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "3:22",
+        "action_raw": "Blutdruckmanschette",
+        "details": "Anlage rechts",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "3:23",
+        "action_raw": "EKG 3-Kanal",
+        "details": "Anlage 3-Kanal",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "4:42",
+        "action_raw": "Infusion",
+        "details": "(Vorbereiten) Vollelektrolytlösung, 500ml",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "5:31",
+        "action_raw": "Auskultation",
+        "details": "Thorax okay",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "5:34",
+        "action_raw": "Auskultation",
+        "details": "Abdomen okay",
+        "expert_comment": "korrekt",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    },
+    {
+        "file": "Los_NST_Alaa_NBA_3.json",
+        "sim_time": "5:42",
+        "action_raw": "Infusion",
+        "details": "(Gabe) Glukoselösung 20%, 500ml",
+        "expert_comment": "korrekt, entscheidende Maßnahme",
+        "doc_verdict": "correct",
+        "engine_flags": [],
+        "match": true
+    }
+]

@@ -38,8 +38,12 @@
         <p id="load-error" class="load-error" hidden></p>
 
         <div class="grid">
+            <!-- Total Score & PDF Download -->
             <div class="card score-card">
-                <h2>Total Score</h2>
+                <div class="score-header">
+                    <h2>Total Score</h2>
+                    <button id="download-pdf-btn" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+                </div>
                 <div class="score-circle-container">
                     <svg class="progress-ring" width="150" height="150">
                         <circle class="progress-ring__circle-bg" stroke="#e5e7eb" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
@@ -49,8 +53,36 @@
                         <span id="total-score">--</span>
                     </div>
                 </div>
+                <div id="verdict-badge" class="verdict-badge"></div>
             </div>
 
+            <!-- Coverage Card -->
+            <div class="card coverage-card">
+                <h2>Action Coverage</h2>
+                <div class="coverage-stats">
+                    <div class="stat"><span id="cov-total">--</span><br><small>Total Actions</small></div>
+                    <div class="stat text-green"><span id="cov-eval">--</span><br><small>Evaluated</small></div>
+                    <div class="stat text-red"><span id="cov-unknown">--</span><br><small>Unknown</small></div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div id="coverage-progress" class="progress-bar-fill"></div>
+                </div>
+                <p id="cov-percent-text">--% Covered</p>
+                <details class="unknown-details">
+                    <summary>View Unknown Actions</summary>
+                    <ul id="unknown-list" class="list-container small-list"></ul>
+                </details>
+            </div>
+
+            <!-- Score Breakdown Card -->
+            <div class="card breakdown-card">
+                <h2>Score Breakdown (Deductions)</h2>
+                <ul id="score-breakdown-list" class="list-container">
+                    <li>Loading...</li>
+                </ul>
+            </div>
+
+            <!-- ABCDE Scheme -->
             <div class="card abcde-card">
                 <h2>Emergency Scheme (ABCDE)</h2>
                 <ul id="abcde-list" class="list-container">
@@ -58,11 +90,13 @@
                 </ul>
             </div>
 
+            <!-- Feedback Log -->
             <div class="card feedback-card">
                 <h2>Feedback Log</h2>
                 <ul id="feedback-list" class="list-container"></ul>
             </div>
 
+            <!-- Critical Errors -->
             <div class="card errors-card">
                 <h2>Critical Errors</h2>
                 <ul id="critical-errors-list" class="list-container"></ul>
@@ -70,6 +104,8 @@
         </div>
     </div>
 
+    <!-- Add jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js" defer></script>
 </body>
 </html>

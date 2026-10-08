@@ -1,0 +1,67 @@
+{
+    "session_info": {
+        "Modul": "Station",
+        "Patient": "Hypoglykämie (Stufe 1)",
+        "Datum": "22.09.2026",
+        "Start": "13:02:14",
+        "Ende": "13:17:19",
+        "Dauer": "15:04",
+        "Entscheidung": "Intensivstation",
+        "NPC Team": "-"
+    },
+    "overall_score": 49,
+    "verdict": "Fail",
+    "coverage": {
+        "total_actions": 51,
+        "evaluated_actions": 51,
+        "unknown_actions": 0,
+        "unknown_action_list": [],
+        "coverage_percent": 100.0
+    },
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 28
+        },
+        "D_Disability": {
+            "status": "Missed",
+            "points_deducted": 5
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 35
+        },
+        "order": {
+            "points_deducted": 0
+        },
+        "timing": {
+            "points_deducted": 8
+        },
+        "critical_errors": {
+            "points_deducted": 0
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[C] Capillary refill / recap time was never assessed!",
+        "[C] Physician/medical staff was never contacted!",
+        "[C] temperature applied late at 700s (target < 600s).",
+        "[C] FAST ultrasound was never performed!",
+        "[D] GCS assessed late at 311s (target < 300s).",
+        "[Safety Cap] Score capped at 49 -- a life-critical step (Airway/Breathing) was skipped or a critical error occurred, regardless of performance elsewhere."
+    ],
+    "critical_errors": []
+}

@@ -1,6 +1,6 @@
 {
     "session_info": {
-        "Modul": "Station",
+        "﻿Modul": "Station",
         "Patient": "Hypoglykämie (Stufe 1)",
         "Datum": "22.09.2026",
         "Start": "13:41:25",
@@ -11,6 +11,13 @@
     },
     "overall_score": 49,
     "verdict": "Fail",
+    "coverage": {
+        "total_actions": 36,
+        "evaluated_actions": 36,
+        "unknown_actions": 0,
+        "unknown_action_list": [],
+        "coverage_percent": 100.0
+    },
     "abcde_breakdown": {
         "A_Airway": {
             "status": "Missed",

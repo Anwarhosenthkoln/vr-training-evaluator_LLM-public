@@ -104,6 +104,13 @@ def new_report(metadata):
         "session_info": metadata,
         "overall_score": 100,
         "verdict": "Pass",
+        "coverage": {
+            "total_actions": 0,
+            "evaluated_actions": 0,
+            "unknown_actions": 0,
+            "unknown_action_list": [],
+            "coverage_percent": 100.0
+        },
         "abcde_breakdown": {
             "A_Airway": {"status": "Missed", "points_deducted": 0},
             "B_Breathing": {"status": "Missed", "points_deducted": 0},

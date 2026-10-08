@@ -1,0 +1,66 @@
+{
+    "session_info": {
+        "Modul": "Station",
+        "Patient": "Gesund (Stufe 1)",
+        "Datum": "22.09.2026",
+        "Start": "11:54:52",
+        "Ende": "12:02:12",
+        "Dauer": "7:19",
+        "Entscheidung": "Auf Station belassen",
+        "NPC Team": "-"
+    },
+    "overall_score": 49,
+    "verdict": "Fail",
+    "coverage": {
+        "total_actions": 28,
+        "evaluated_actions": 28,
+        "unknown_actions": 0,
+        "unknown_action_list": [],
+        "coverage_percent": 100.0
+    },
+    "abcde_breakdown": {
+        "A_Airway": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "B_Breathing": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "C_Circulation": {
+            "status": "Missed",
+            "points_deducted": 30
+        },
+        "D_Disability": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "score_breakdown": {
+        "completeness": {
+            "points_deducted": 50
+        },
+        "order": {
+            "points_deducted": 0
+        },
+        "timing": {
+            "points_deducted": 0
+        },
+        "critical_errors": {
+            "points_deducted": 0
+        }
+    },
+    "feedback": [
+        "[A] Airway was not checked!",
+        "[C] Physician/medical staff was never contacted!",
+        "[C] Infusion was never started!",
+        "[C] FAST ultrasound was never performed!",
+        "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!",
+        "[Safety Cap] Score capped at 49 -- a life-critical step (Airway/Breathing) was skipped or a critical error occurred, regardless of performance elsewhere."
+    ],
+    "critical_errors": []
+}

@@ -2,6 +2,13 @@
     "session_info": {},
     "overall_score": 43,
     "verdict": "Fail",
+    "coverage": {
+        "total_actions": 56,
+        "evaluated_actions": 56,
+        "unknown_actions": 0,
+        "unknown_action_list": [],
+        "coverage_percent": 100.0
+    },
     "abcde_breakdown": {
         "A_Airway": {
             "status": "Missed",

@@ -175,3 +175,97 @@ li.empty {
     color: #047857;
     font-style: normal;
 }
+
+/* Extra Styles for Phase 2 */
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 10px;
+}
+
+.score-header h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+.verdict-badge {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.verdict-badge.pass { background: #d1fae5; color: #065f46; }
+.verdict-badge.fail { background: #fee2e2; color: #991b1b; }
+
+/* Coverage Stats */
+.coverage-stats {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.stat {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.text-green { color: #10b981; }
+.text-red { color: #ef4444; }
+
+.progress-bar-bg {
+    background-color: #e5e7eb;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-bar-fill {
+    background-color: #3b82f6;
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease-out;
+}
+
+#cov-percent-text {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 0;
+    color: #4b5563;
+}
+
+.unknown-details {
+    margin-top: 15px;
+    cursor: pointer;
+}
+.small-list {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+

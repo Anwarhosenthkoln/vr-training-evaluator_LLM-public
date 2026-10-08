@@ -11,6 +11,13 @@
     },
     "overall_score": 17,
     "verdict": "Fail",
+    "coverage": {
+        "total_actions": 25,
+        "evaluated_actions": 25,
+        "unknown_actions": 0,
+        "unknown_action_list": [],
+        "coverage_percent": 100.0
+    },
     "abcde_breakdown": {
         "A_Airway": {
             "status": "Missed",

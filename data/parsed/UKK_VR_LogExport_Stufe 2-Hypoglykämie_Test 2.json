@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "Modul": "Station",
+        "﻿Modul": "Station",
         "Patient": "Hypoglykämie (Stufe 1)",
         "Datum": "22.09.2026",
         "Start": "13:41:25",
@@ -19,8 +19,7 @@
             "action_raw": "Atmung prüfen",
             "action_code": "CHECK_BREATHING",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 2,
@@ -31,8 +30,7 @@
             "action_raw": "Atmung prüfen",
             "action_code": "CHECK_BREATHING",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 3,
@@ -43,8 +41,7 @@
             "action_raw": "Puls messen",
             "action_code": "CHECK_PULSE",
             "phase": "Start",
-            "details": "Radialis",
-            "expert_comment": null
+            "details": "Radialis"
         },
         {
             "id": 4,
@@ -55,8 +52,7 @@
             "action_raw": "Puls messen",
             "action_code": "CHECK_PULSE",
             "phase": "Stop",
-            "details": "Puls deutlich tastbar",
-            "expert_comment": null
+            "details": "Puls deutlich tastbar"
         },
         {
             "id": 5,
@@ -67,8 +63,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "Robin -> Hole Gegenstand",
-            "expert_comment": null
+            "details": "Robin -> Hole Gegenstand"
         },
         {
             "id": 6,
@@ -79,8 +74,7 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "Notfallkoffer, EKG, Monitor, Infusionsmaterial, Stationsmedikamente",
-            "expert_comment": null
+            "details": "Notfallkoffer, EKG, Monitor, Infusionsmaterial, Stationsmedikamente"
         },
         {
             "id": 7,
@@ -91,8 +85,7 @@
             "action_raw": "GCS",
             "action_code": "GCS_CHECK",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 8,
@@ -103,8 +96,7 @@
             "action_raw": "GCS",
             "action_code": "GCS_CHECK",
             "phase": "Stop",
-            "details": "GCS 11",
-            "expert_comment": null
+            "details": "GCS 11"
         },
         {
             "id": 9,
@@ -115,8 +107,7 @@
             "action_raw": "Neurologische Untersuchung",
             "action_code": "NEURO_EXAM",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 10,
@@ -127,8 +118,7 @@
             "action_raw": "Neurologische Untersuchung",
             "action_code": "NEURO_EXAM",
             "phase": "Stop",
-            "details": "Keine Anzeichen für eine Fazialisparese,",
-            "expert_comment": null
+            "details": "Keine Anzeichen für eine Fazialisparese,"
         },
         {
             "id": 11,
@@ -139,8 +129,7 @@
             "action_raw": "Patient entkleiden",
             "action_code": "UNDRESS_PATIENT",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 12,
@@ -151,8 +140,7 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 13,
@@ -163,8 +151,7 @@
             "action_raw": "Patient entkleiden",
             "action_code": "UNDRESS_PATIENT",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 14,
@@ -175,8 +162,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_BLOOD_DRAW",
             "phase": "Start",
-            "details": "Charlie -> Blutentnahme",
-            "expert_comment": null
+            "details": "Charlie -> Blutentnahme"
         },
         {
             "id": 15,
@@ -187,8 +173,7 @@
             "action_raw": "Blutentnahme",
             "action_code": "BLOOD_DRAW",
             "phase": "Start",
-            "details": "Serum, BGA, EDTA klein, Citrat",
-            "expert_comment": null
+            "details": "Serum, BGA, EDTA klein, Citrat"
         },
         {
             "id": 16,
@@ -199,8 +184,7 @@
             "action_raw": "Monitor anbauen",
             "action_code": "MONITOR_ATTACH",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 17,
@@ -211,8 +195,7 @@
             "action_raw": "EKG 3-Kanal",
             "action_code": "ECG_3LEAD_APPLY",
             "phase": "Start",
-            "details": "Anlage 3-Kanal",
-            "expert_comment": null
+            "details": "Anlage 3-Kanal"
         },
         {
             "id": 18,
@@ -223,8 +206,7 @@
             "action_raw": "Pulsoxymetrie",
             "action_code": "PULSE_OX_APPLY",
             "phase": "Start",
-            "details": "Anlage Rechts",
-            "expert_comment": null
+            "details": "Anlage Rechts"
         },
         {
             "id": 19,
@@ -235,8 +217,7 @@
             "action_raw": "Pulsoxymetrie",
             "action_code": "PULSE_OX_APPLY",
             "phase": "Start",
-            "details": "Anlage Rechts",
-            "expert_comment": null
+            "details": "Anlage Rechts"
         },
         {
             "id": 20,
@@ -247,8 +228,7 @@
             "action_raw": "Blutdruckmanschette",
             "action_code": "BP_CUFF_APPLY",
             "phase": "Start",
-            "details": "Anlage rechts",
-            "expert_comment": null
+            "details": "Anlage rechts"
         },
         {
             "id": 21,
@@ -259,8 +239,7 @@
             "action_raw": "Blutdruckmanschette",
             "action_code": "BP_CUFF_APPLY",
             "phase": "Start",
-            "details": "Anlage rechts",
-            "expert_comment": null
+            "details": "Anlage rechts"
         },
         {
             "id": 22,
@@ -271,8 +250,7 @@
             "action_raw": "Blutentnahme",
             "action_code": "BLOOD_DRAW",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 23,
@@ -283,8 +261,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_IV_ACCESS",
             "phase": "Start",
-            "details": "Robin -> PVK",
-            "expert_comment": null
+            "details": "Robin -> PVK"
         },
         {
             "id": 24,
@@ -295,8 +272,7 @@
             "action_raw": "PVK",
             "action_code": "IV_ACCESS",
             "phase": "Start",
-            "details": "Anlage links",
-            "expert_comment": null
+            "details": "Anlage links"
         },
         {
             "id": 25,
@@ -307,8 +283,7 @@
             "action_raw": "Monitor anbauen",
             "action_code": "MONITOR_ATTACH",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 26,
@@ -319,8 +294,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_BLOOD_GAS_ANALYSIS",
             "phase": "Start",
-            "details": "Charlie -> BGA durchführen",
-            "expert_comment": null
+            "details": "Charlie -> BGA durchführen"
         },
         {
             "id": 27,
@@ -331,8 +305,7 @@
             "action_raw": "BGA durchführen",
             "action_code": "BLOOD_GAS_ANALYSIS",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 28,
@@ -343,8 +316,7 @@
             "action_raw": "PVK",
             "action_code": "IV_ACCESS",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 29,
@@ -355,8 +327,7 @@
             "action_raw": "GCS",
             "action_code": "GCS_CHECK",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 30,
@@ -367,8 +338,7 @@
             "action_raw": "GCS",
             "action_code": "GCS_CHECK",
             "phase": "Stop",
-            "details": "GCS 10",
-            "expert_comment": null
+            "details": "GCS 10"
         },
         {
             "id": 31,
@@ -379,8 +349,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "Robin -> Hole Gegenstand",
-            "expert_comment": null
+            "details": "Robin -> Hole Gegenstand"
         },
         {
             "id": 32,
@@ -391,8 +360,7 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Start",
-            "details": "BZ Gerät, Thermometer, Stethoskop, Saft, Fruchtzucker",
-            "expert_comment": null
+            "details": "BZ Gerät, Thermometer, Stethoskop, Saft, Fruchtzucker"
         },
         {
             "id": 33,
@@ -403,8 +371,7 @@
             "action_raw": "Infusion",
             "action_code": "INFUSION",
             "phase": "Start",
-            "details": "(Gabe) Vollelektrolytlösung, 500ml",
-            "expert_comment": null
+            "details": "(Gabe) Vollelektrolytlösung, 500ml"
         },
         {
             "id": 34,
@@ -415,8 +382,7 @@
             "action_raw": "GCS",
             "action_code": "GCS_CHECK",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 35,
@@ -427,8 +393,7 @@
             "action_raw": "GCS",
             "action_code": "GCS_CHECK",
             "phase": "Stop",
-            "details": "GCS 10",
-            "expert_comment": null
+            "details": "GCS 10"
         },
         {
             "id": 36,
@@ -439,8 +404,7 @@
             "action_raw": "Infusion",
             "action_code": "INFUSION",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 37,
@@ -451,8 +415,7 @@
             "action_raw": "Hole Gegenstand",
             "action_code": "FETCH_EQUIPMENT",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 38,
@@ -463,8 +426,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_TEMPERATURE",
             "phase": "Start",
-            "details": "Robin -> Temperatur messen",
-            "expert_comment": null
+            "details": "Robin -> Temperatur messen"
         },
         {
             "id": 39,
@@ -475,8 +437,7 @@
             "action_raw": "Temperatur messen",
             "action_code": "TEMPERATURE",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 40,
@@ -487,8 +448,7 @@
             "action_raw": "Temperatur messen",
             "action_code": "TEMPERATURE",
             "phase": "Start",
-            "details": "37,1°C",
-            "expert_comment": null
+            "details": "37,1°C"
         },
         {
             "id": 41,
@@ -499,8 +459,7 @@
             "action_raw": "Temperatur messen",
             "action_code": "TEMPERATURE",
             "phase": "Stop",
-            "details": "37,1°C",
-            "expert_comment": null
+            "details": "37,1°C"
         },
         {
             "id": 42,
@@ -511,8 +470,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_BLOOD_SUGAR",
             "phase": "Start",
-            "details": "Robin -> Blutzucker messen",
-            "expert_comment": null
+            "details": "Robin -> Blutzucker messen"
         },
         {
             "id": 43,
@@ -523,8 +481,7 @@
             "action_raw": "Blutzucker messen",
             "action_code": "BLOOD_SUGAR",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 44,
@@ -535,8 +492,7 @@
             "action_raw": "BGA durchführen",
             "action_code": "BLOOD_GAS_ANALYSIS",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 45,
@@ -547,8 +503,7 @@
             "action_raw": "Blutzucker messen",
             "action_code": "BLOOD_SUGAR",
             "phase": "Stop",
-            "details": "28 mg/dL",
-            "expert_comment": null
+            "details": "28 mg/dL"
         },
         {
             "id": 46,
@@ -559,8 +514,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_GIVE_GLUCOSE_ORAL",
             "phase": "Start",
-            "details": "Charlie -> Gabe Traubenzucker/Saft",
-            "expert_comment": null
+            "details": "Charlie -> Gabe Traubenzucker/Saft"
         },
         {
             "id": 47,
@@ -571,8 +525,7 @@
             "action_raw": "Gabe Traubenzucker/Saft",
             "action_code": "GIVE_GLUCOSE_ORAL",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 48,
@@ -583,8 +536,7 @@
             "action_raw": "Gabe Traubenzucker/Saft",
             "action_code": "GIVE_GLUCOSE_ORAL",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 49,
@@ -595,8 +547,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_INFUSION",
             "phase": "Start",
-            "details": "Robin -> Infusion",
-            "expert_comment": null
+            "details": "Robin -> Infusion"
         },
         {
             "id": 50,
@@ -607,8 +558,7 @@
             "action_raw": "Infusion",
             "action_code": "INFUSION",
             "phase": "Start",
-            "details": "(Gabe) Glukoselösung 40%, 100ml",
-            "expert_comment": null
+            "details": "(Gabe) Glukoselösung 40%, 100ml"
         },
         {
             "id": 51,
@@ -619,8 +569,7 @@
             "action_raw": "NPC beauftragen",
             "action_code": "DELEGATE_ECG_12LEAD_APPLY",
             "phase": "Start",
-            "details": "Charlie -> EKG 12-Kanal",
-            "expert_comment": null
+            "details": "Charlie -> EKG 12-Kanal"
         },
         {
             "id": 52,
@@ -631,8 +580,7 @@
             "action_raw": "EKG 12-Kanal",
             "action_code": "ECG_12LEAD_APPLY",
             "phase": "Start",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 53,
@@ -643,8 +591,7 @@
             "action_raw": "Infusion",
             "action_code": "INFUSION",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 54,
@@ -655,8 +602,7 @@
             "action_raw": "EKG 12-Kanal",
             "action_code": "ECG_12LEAD_APPLY",
             "phase": "Stop",
-            "details": "",
-            "expert_comment": null
+            "details": ""
         },
         {
             "id": 55,
@@ -667,8 +613,7 @@
             "action_raw": "Blutzucker messen",
             "action_code": "BLOOD_SUGAR",
             "phase": "Start",
-            "details": "60 mg/dL",
-            "expert_comment": null
+            "details": "60 mg/dL"
         }
     ],
     "vital_parameters": [

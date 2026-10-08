@@ -985,7 +985,7 @@
         "sim_time_seconds": 1438,
         "actor": "Dirk",
         "action_raw": "NPC beauftragen",
-        "action_code": "DELEGATE_UNKNOWN_ACTION",
+        "action_code": "DELEGATE_BLOOD_TRANSFUSION",
         "phase": "Start",
         "details": "Pflege -> Transfusion einleiten"
     },
@@ -996,7 +996,7 @@
         "sim_time_seconds": 1439,
         "actor": "Pflege",
         "action_raw": "Transfusion einleiten",
-        "action_code": "UNKNOWN_ACTION",
+        "action_code": "BLOOD_TRANSFUSION",
         "phase": "Start",
         "details": ""
     },

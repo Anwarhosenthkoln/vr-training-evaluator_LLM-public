@@ -1,7 +1,15 @@
-.venv/
-__pycache__/
-*.pyc
-.VSCode/
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
 
-# Ignore parsed data if you want, but for now we can commit it to share with the team
-# data/parsed/
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

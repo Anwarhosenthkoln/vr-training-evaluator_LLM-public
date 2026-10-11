@@ -17,7 +17,7 @@ async function loadReport(filename) {
     showLoading(filename);
 
     try {
-        const response = await fetch(REPORTS_DIR + encodeURIComponent(filename), {
+        const response = await fetch(REPORTS_DIR + filename, {
             cache: 'no-store',
             signal: activeRequest.signal,
         });

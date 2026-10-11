@@ -133,14 +133,12 @@ def run_sanity_check():
 
 
 def start_server(port=8080):
-    import http.server
+    from app import CustomHTTPRequestHandler
     import socketserver
     
-    # We serve from the root so /data/reports and /frontend are accessible
-    os.chdir(BASE_DIR)
-    handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", port), handler) as httpd:
-        url = f"http://localhost:{port}/frontend/index.html"
+    server_address = ('127.0.0.1', port)
+    with socketserver.TCPServer(server_address, CustomHTTPRequestHandler) as httpd:
+        url = f"http://127.0.0.1:{port}/frontend/index.html"
         print(f"\n🚀 Dashboard server started at: {url}")
         print("Press Ctrl+C to stop the server.\n")
         webbrowser.open(url)

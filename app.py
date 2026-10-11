@@ -14,6 +14,7 @@ import socketserver
 import threading
 import time
 import webbrowser
+import urllib.parse
 
 # Determine if running in a bundled PyInstaller environment
 if getattr(sys, 'frozen', False):
@@ -47,6 +48,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def translate_path(self, path):
         # Strip query strings and hashes
         path = path.split('?', 1)[0].split('#', 1)[0]
+        # URL-decode path so percent-encoded spaces (%20) and umlauts (%C3%A4) match the disk
+        path = urllib.parse.unquote(path)
         parts = [p for p in path.split('/') if p and p != '..']
 
         if not parts or parts == ['index.html']:

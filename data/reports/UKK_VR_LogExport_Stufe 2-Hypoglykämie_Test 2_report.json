@@ -9,8 +9,8 @@
         "Entscheidung": "Intensivstation",
         "NPC Team": "-"
     },
-    "overall_score": 49,
-    "verdict": "Fail",
+    "overall_score": 75,
+    "verdict": "Pass",
     "coverage": {
         "total_actions": 36,
         "evaluated_actions": 36,
@@ -20,8 +20,8 @@
     },
     "abcde_breakdown": {
         "A_Airway": {
-            "status": "Missed",
-            "points_deducted": 10
+            "status": "Passed",
+            "points_deducted": 0
         },
         "B_Breathing": {
             "status": "Passed",
@@ -42,7 +42,7 @@
     },
     "score_breakdown": {
         "completeness": {
-            "points_deducted": 35
+            "points_deducted": 25
         },
         "order": {
             "points_deducted": 0
@@ -55,11 +55,10 @@
         }
     },
     "feedback": [
-        "[A] Airway was not checked!",
+        "[A] Airway patent (confirmed by patient verbal responsiveness).",
         "[C] Capillary refill / recap time was never assessed!",
         "[C] Physician/medical staff was never contacted!",
-        "[C] FAST ultrasound was never performed!",
-        "[Safety Cap] Score capped at 49 -- a life-critical step (Airway/Breathing) was skipped or a critical error occurred, regardless of performance elsewhere."
+        "[C] FAST ultrasound was never performed!"
     ],
     "critical_errors": []
 }

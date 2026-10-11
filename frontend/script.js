@@ -85,8 +85,9 @@ function populateDashboard(report, filename) {
     const sb = report.score_breakdown || {};
     for (const [category, pts] of Object.entries(sb)) {
         const li = document.createElement('li');
-        li.textContent = `${category.replace('_', ' ')}: -${pts} pts`;
-        if (pts > 0) li.className = 'fail';
+        const deduction = typeof pts === 'object' && pts !== null ? (pts.points_deducted || 0) : (pts || 0);
+        li.textContent = `${category.replace('_', ' ')}: -${deduction} pts`;
+        if (deduction > 0) li.className = 'fail';
         breakdownList.append(li);
     }
 

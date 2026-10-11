@@ -9,7 +9,7 @@
         "Entscheidung": "Auf Station belassen",
         "NPC Team": "-"
     },
-    "overall_score": 49,
+    "overall_score": 60,
     "verdict": "Fail",
     "coverage": {
         "total_actions": 28,
@@ -20,8 +20,8 @@
     },
     "abcde_breakdown": {
         "A_Airway": {
-            "status": "Missed",
-            "points_deducted": 10
+            "status": "Passed",
+            "points_deducted": 0
         },
         "B_Breathing": {
             "status": "Passed",
@@ -42,7 +42,7 @@
     },
     "score_breakdown": {
         "completeness": {
-            "points_deducted": 50
+            "points_deducted": 40
         },
         "order": {
             "points_deducted": 0
@@ -55,12 +55,11 @@
         }
     },
     "feedback": [
-        "[A] Airway was not checked!",
+        "[A] Airway patent (confirmed by patient verbal responsiveness).",
         "[C] Physician/medical staff was never contacted!",
         "[C] Infusion was never started!",
         "[C] FAST ultrasound was never performed!",
-        "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!",
-        "[Safety Cap] Score capped at 49 -- a life-critical step (Airway/Breathing) was skipped or a critical error occurred, regardless of performance elsewhere."
+        "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!"
     ],
     "critical_errors": []
 }

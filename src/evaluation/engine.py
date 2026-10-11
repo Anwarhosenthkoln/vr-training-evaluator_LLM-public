@@ -69,8 +69,13 @@ def evaluate_session(parsed_session_path, output_report_path):
         report["coverage"]["coverage_percent"] = 0.0
 
     # --- A: Airway ---
+    patient_speaks = bool(session_data.get("patient_talk")) if isinstance(session_data, dict) else False
     if has_event(events, ["CHECK_AIRWAY"]):
         report["abcde_breakdown"]["A_Airway"]["status"] = "Passed"
+    elif patient_speaks:
+        # Clinical guideline: Clear verbal responsiveness confirms airway patency
+        report["abcde_breakdown"]["A_Airway"]["status"] = "Passed"
+        report["feedback"].append("[A] Airway patent (confirmed by patient verbal responsiveness).")
     else:
         report["abcde_breakdown"]["A_Airway"]["points_deducted"] = POINTS["MISSING_AIRWAY"]
         report["feedback"].append("[A] Airway was not checked!")
@@ -402,15 +407,19 @@ def evaluate_session(parsed_session_path, output_report_path):
     return report
 
 
-if __name__ == "__main__":
+def evaluate_all_sessions(parsed_dir=None, reports_dir=None):
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    parsed_dir = os.path.abspath(os.path.join(script_dir, "../../data/parsed"))
-    reports_dir = os.path.abspath(os.path.join(script_dir, "../../data/reports"))
+    if parsed_dir is None:
+        parsed_dir = os.path.abspath(os.path.join(script_dir, "../../data/parsed"))
+    if reports_dir is None:
+        reports_dir = os.path.abspath(os.path.join(script_dir, "../../data/reports"))
 
+    os.makedirs(reports_dir, exist_ok=True)
     json_files = [f for f in os.listdir(parsed_dir) if f.endswith(".json")]
 
     if not json_files:
         print("⚠️ No JSON files found. Is Person A finished with the parser?")
+        return
 
     for json_file in json_files:
         input_path = os.path.join(parsed_dir, json_file)
@@ -419,3 +428,7 @@ if __name__ == "__main__":
             evaluate_session(input_path, output_path)
         except Exception as ex:
             print(f"❌ Failed to evaluate {json_file}: {ex}")
+
+
+if __name__ == "__main__":
+    evaluate_all_sessions()

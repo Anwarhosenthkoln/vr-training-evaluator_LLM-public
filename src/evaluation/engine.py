@@ -399,6 +399,7 @@ def evaluate_session(parsed_session_path, output_report_path):
         f"Generated report for {os.path.basename(parsed_session_path)} "
         f"with Score: {report['overall_score']} ({report['verdict']})"
     )
+    return report
 
 
 if __name__ == "__main__":

@@ -23,36 +23,57 @@ graph TD
 
 ```text
 vr-training-evaluator/
-├── README.md                 <-- You are here
+├── README.md                 <-- System documentation
+├── requirements.txt          <-- Python dependencies
+├── run_pipeline.py           <-- One-click CLI & server runner
 ├── data/
 │   ├── raw_logs/             <-- Put original VR logs (.txt, .docx) here
 │   ├── parsed/               <-- Output from Parser goes here (.json)
 │   └── reports/              <-- Output from Evaluation Engine goes here (.json)
+├── docs/
+│   └── scoring_weights.md    <-- Medical scoring rubric documentation
 ├── frontend/
 │   ├── index.html            <-- Dashboard entry point
 │   ├── styles.css            <-- UI styling
-│   └── script.js             <-- UI logic for loading the reports
+│   └── script.js             <-- UI logic & PDF report generator
 └── src/
     ├── parser/
     │   ├── log_parser.py     <-- Parses txt files
     │   └── docx_parser.py    <-- Parses docx files + extracts expert comments
-    └── evaluation/
-        └── engine.py         <-- Medical assessment logic based on ABCDE
+    ├── evaluation/
+    │   ├── engine.py         <-- ABCDE clinical evaluation engine
+    │   └── scoring.py        <-- Scoring weights, caps & limits
+    └── validation/
+        ├── sanity_check.py   <-- Validates against doctor annotations
+        └── team_comparison.py <-- Compares results with other team
 ```
 
-## 🚀 Workflows
+## ⚡ Quickstart (Deployable Package)
 
-### Person A Workflow (Parser)
-1. Add new log files to `data/raw_logs/`
-2. Run `python src/parser/docx_parser.py`
-3. Verify JSON output in `data/parsed/`
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### Person B Workflow (Evaluation)
-1. Read JSON array from `data/parsed/`
-2. Run evaluation rules in `src/evaluation/engine.py`
-3. Output the final graded report to `data/reports/report_X.json`
+### 2. Run the Full Pipeline
+Process all logs and generate complete evaluation reports:
+```bash
+python run_pipeline.py
+```
 
-### Person C Workflow (Dashboard)
-1. Write dashboard logic in `/frontend/` 
-2. Use Javascript's `fetch()` to dynamically read `data/reports/report_X.json`
-3. Display the final score and critical warnings in the UI.
+### 3. Evaluate a Single Log File
+```bash
+python run_pipeline.py --file data/raw_logs/My_Session.docx
+```
+
+### 4. Launch the Dashboard
+```bash
+python run_pipeline.py --serve
+```
+This automatically opens `http://localhost:8080/frontend/index.html` in your default browser.
+
+### 5. Run Sanity Check Validation
+```bash
+python run_pipeline.py --validate
+```
+

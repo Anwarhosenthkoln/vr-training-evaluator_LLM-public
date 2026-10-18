@@ -9,7 +9,7 @@
         "Entscheidung": "OP",
         "NPC Team": "-"
     },
-    "overall_score": 32,
+    "overall_score": 12,
     "verdict": "Fail",
     "coverage": {
         "total_actions": 36,
@@ -20,16 +20,16 @@
     },
     "abcde_breakdown": {
         "A_Airway": {
-            "status": "Passed",
-            "points_deducted": 0
-        },
-        "B_Breathing": {
             "status": "Missed",
             "points_deducted": 10
         },
+        "B_Breathing": {
+            "status": "Missed",
+            "points_deducted": 15
+        },
         "C_Circulation": {
             "status": "Missed",
-            "points_deducted": 13
+            "points_deducted": 8
         },
         "D_Disability": {
             "status": "Missed",
@@ -40,29 +40,41 @@
             "points_deducted": 0
         }
     },
+    "further_diagnostics": {
+        "BGA": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "FAST": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
     "score_breakdown": {
         "completeness": {
-            "points_deducted": 33
+            "points_deducted": 48
         },
         "order": {
             "points_deducted": 5
         },
         "timing": {
-            "points_deducted": 0
+            "points_deducted": 5
         },
         "critical_errors": {
             "points_deducted": 30
         }
     },
     "feedback": [
-        "[A] Airway patent (confirmed by patient verbal responsiveness).",
-        "[B] Breathing was not checked!",
+        "[A] Airway was not explicitly checked!",
+        "[B] Breathing was not assessed!",
+        "[B] Auscultation of the lungs was not performed!",
+        "[C] Physician contacted late at 151s (target < 120s / 2 min).",
         "[C] Monitoring incomplete, never applied: temperature.",
-        "[C] Blood gas analysis (BGA) was never performed!",
         "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!",
+        "[Diagnostics] Blood gas analysis (BGA) was never performed. (Not required in every scenario — doctor to confirm applicability.)",
         "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 6:33)",
-        "ERROR: Oxygen given at 6:17 while SpO2 was 99% (>96%, no indication).",
-        "[Order] Pulse check performed at 58s before breathing was assessed (breathing was never checked)."
+        "ERROR: Oxygen given at 6:17 while SpO2 was 99% (> 96%, ERC 2025: no indication for supplemental O2). Point deduction applied (NOT an automatic fail).",
+        "[Order] Pulse check performed at 58s before breathing was assessed (breathing never checked)."
     ],
     "critical_errors": [
         "WRONG_MED_CATECHOLAMINE",

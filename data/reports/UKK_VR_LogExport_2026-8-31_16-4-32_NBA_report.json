@@ -9,7 +9,7 @@
         "Entscheidung": "Koronarangiographie mit PCI",
         "NPC Team": "-"
     },
-    "overall_score": 27,
+    "overall_score": 22,
     "verdict": "Fail",
     "coverage": {
         "total_actions": 25,
@@ -20,29 +20,39 @@
     },
     "abcde_breakdown": {
         "A_Airway": {
-            "status": "Passed",
-            "points_deducted": 0
+            "status": "Missed",
+            "points_deducted": 10
         },
         "B_Breathing": {
             "status": "Missed",
-            "points_deducted": 10
+            "points_deducted": 15
         },
         "C_Circulation": {
             "status": "Missed",
-            "points_deducted": 13
+            "points_deducted": 3
         },
         "D_Disability": {
-            "status": "Missed",
-            "points_deducted": 10
+            "status": "Passed",
+            "points_deducted": 0
         },
         "E_Exposure": {
             "status": "Passed",
             "points_deducted": 0
         }
     },
+    "further_diagnostics": {
+        "BGA": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "FAST": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
     "score_breakdown": {
         "completeness": {
-            "points_deducted": 33
+            "points_deducted": 38
         },
         "order": {
             "points_deducted": 5
@@ -55,14 +65,14 @@
         }
     },
     "feedback": [
-        "[A] Airway patent (confirmed by patient verbal responsiveness).",
-        "[B] Breathing was not checked!",
+        "[A] Airway was not explicitly checked!",
+        "[B] Breathing was not assessed!",
+        "[B] Auscultation of the lungs was not performed!",
         "[C] Monitoring incomplete, never applied: temperature.",
-        "[C] Blood gas analysis (BGA) was never performed!",
-        "[D] GCS / neurological status was never assessed!",
-        "ERROR: Oxygen given at 3:52 while SpO2 was 98% (>96%, no indication).",
-        "CRITICAL ERROR: Decision recorded as 'Koronarangiographie mit PCI' -- PCI/coronary angiography was activated despite a suspected postoperative bleeding!",
-        "[Order] Pulse check performed at 35s before breathing was assessed (breathing was never checked)."
+        "[Diagnostics] Blood gas analysis (BGA) was never performed. (Not required in every scenario — doctor to confirm applicability.)",
+        "ERROR: Oxygen given at 3:52 while SpO2 was 98% (> 96%, ERC 2025: no indication for supplemental O2). Point deduction applied (NOT an automatic fail).",
+        "CRITICAL ERROR: Decision recorded as 'Koronarangiographie mit PCI' — PCI/coronary angiography activated despite suspected postoperative bleeding!",
+        "[Order] Pulse check performed at 35s before breathing was assessed (breathing never checked)."
     ],
     "critical_errors": [
         "OXYGEN_WITHOUT_INDICATION",

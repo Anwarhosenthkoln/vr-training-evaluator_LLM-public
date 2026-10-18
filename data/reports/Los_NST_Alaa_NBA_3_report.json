@@ -25,13 +25,23 @@
         },
         "C_Circulation": {
             "status": "Missed",
-            "points_deducted": 18
+            "points_deducted": 8
         },
         "D_Disability": {
             "status": "Passed",
             "points_deducted": 0
         },
         "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "further_diagnostics": {
+        "BGA": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "FAST": {
             "status": "Passed",
             "points_deducted": 0
         }
@@ -51,12 +61,12 @@
         }
     },
     "feedback": [
-        "[A] Airway was not checked!",
+        "[A] Airway was not explicitly checked!",
         "[C] Capillary refill / recap time was never assessed!",
         "[C] Monitoring incomplete, never applied: temperature.",
-        "[C] Blood gas analysis (BGA) was never performed!",
-        "[Order] Pulse check performed at 58s before breathing was assessed (breathing checked at 159s).",
-        "[Safety Cap] Score capped at 49 -- a life-critical step (Airway/Breathing) was skipped or a critical error occurred, regardless of performance elsewhere."
+        "[Diagnostics] Blood gas analysis (BGA) was never performed. (Not required in every scenario — doctor to confirm applicability.)",
+        "[Order] Pulse check performed at 58s before breathing was assessed (breathing at 159s).",
+        "[Safety Cap] Score capped at 49 – a life-critical step (Airway/Breathing) was skipped or a fatal clinical error occurred."
     ],
     "critical_errors": []
 }

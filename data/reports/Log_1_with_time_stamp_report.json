@@ -16,11 +16,11 @@
         },
         "B_Breathing": {
             "status": "Missed",
-            "points_deducted": 10
+            "points_deducted": 15
         },
         "C_Circulation": {
             "status": "Missed",
-            "points_deducted": 38
+            "points_deducted": 18
         },
         "D_Disability": {
             "status": "Missed",
@@ -31,9 +31,19 @@
             "points_deducted": 0
         }
     },
+    "further_diagnostics": {
+        "BGA": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "FAST": {
+            "status": "Missed",
+            "points_deducted": 10
+        }
+    },
     "score_breakdown": {
         "completeness": {
-            "points_deducted": 68
+            "points_deducted": 73
         },
         "order": {
             "points_deducted": 15
@@ -46,17 +56,18 @@
         }
     },
     "feedback": [
-        "[A] Airway was not checked!",
-        "[B] Breathing was not checked!",
+        "[A] Airway was not explicitly checked!",
+        "[B] Breathing was not assessed!",
+        "[B] Auscultation of the lungs was not performed!",
         "[C] Pulse was not checked!",
         "[C] Capillary refill / recap time was never assessed!",
         "[C] Monitoring incomplete, never applied: temperature.",
-        "[C] Blood gas analysis (BGA) was never performed!",
-        "[C] FAST ultrasound was never performed!",
         "[D] GCS / neurological status was never assessed!",
+        "[Diagnostics] Blood gas analysis (BGA) was never performed. (Not required in every scenario — doctor to confirm applicability.)",
+        "[Diagnostics] FAST ultrasound was never performed. (Not required in every scenario — doctor to confirm applicability.)",
         "CRITICAL ERROR: Adrenalin/Noradrenalin cannot be given on the normal ward! (Event at 1:36)",
-        "[Order] Medication given at 96s before the initial ABCDE assessment (airway/breathing/pulse check) was performed.",
-        "[Order] Palpation performed at 78s before breathing was assessed (breathing was never checked)."
+        "[Order] Medication given at 96s before the initial ABCDE assessment.",
+        "[Order] Palpation performed at 78s before breathing was assessed (breathing never checked)."
     ],
     "critical_errors": [
         "WRONG_MED_CATECHOLAMINE"

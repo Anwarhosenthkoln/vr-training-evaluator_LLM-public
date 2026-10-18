@@ -20,7 +20,7 @@
         },
         "C_Circulation": {
             "status": "Missed",
-            "points_deducted": 57
+            "points_deducted": 37
         },
         "D_Disability": {
             "status": "Missed",
@@ -29,6 +29,16 @@
         "E_Exposure": {
             "status": "Passed",
             "points_deducted": 0
+        }
+    },
+    "further_diagnostics": {
+        "BGA": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "FAST": {
+            "status": "Missed",
+            "points_deducted": 10
         }
     },
     "score_breakdown": {
@@ -46,15 +56,15 @@
         }
     },
     "feedback": [
-        "[C] Physician/medical staff was never contacted!",
+        "[C] Physician / medical staff was never contacted!",
         "[C] Monitoring incomplete, never applied: pulse oximetry, temperature.",
-        "[C] blood pressure cuff applied late at 671s (target < 600s).",
-        "[C] 3-lead ECG applied late at 609s (target < 600s).",
-        "[C] Venous access established late at 1684s (target < 1200s).",
+        "[C] blood pressure cuff applied late at 671s (target < 300s).",
+        "[C] 3-lead ECG applied late at 609s (target < 300s).",
+        "[C] Venous access established late at 1684s (target < 300s).",
         "[C] Infusion was never started!",
-        "[C] Blood gas analysis (BGA) was never performed!",
-        "[C] FAST ultrasound was never performed!",
-        "[D] GCS / neurological status was never assessed!"
+        "[D] GCS / neurological status was never assessed!",
+        "[Diagnostics] Blood gas analysis (BGA) was never performed. (Not required in every scenario — doctor to confirm applicability.)",
+        "[Diagnostics] FAST ultrasound was never performed. (Not required in every scenario — doctor to confirm applicability.)"
     ],
     "critical_errors": []
 }

@@ -9,7 +9,7 @@
         "Entscheidung": "Auf Station belassen",
         "NPC Team": "-"
     },
-    "overall_score": 60,
+    "overall_score": 49,
     "verdict": "Fail",
     "coverage": {
         "total_actions": 28,
@@ -20,46 +20,58 @@
     },
     "abcde_breakdown": {
         "A_Airway": {
-            "status": "Passed",
-            "points_deducted": 0
+            "status": "Missed",
+            "points_deducted": 10
         },
         "B_Breathing": {
-            "status": "Passed",
-            "points_deducted": 0
+            "status": "Missed",
+            "points_deducted": 5
         },
         "C_Circulation": {
             "status": "Missed",
-            "points_deducted": 30
+            "points_deducted": 23
         },
         "D_Disability": {
-            "status": "Missed",
-            "points_deducted": 10
+            "status": "Passed",
+            "points_deducted": 0
         },
         "E_Exposure": {
             "status": "Passed",
             "points_deducted": 0
         }
     },
+    "further_diagnostics": {
+        "BGA": {
+            "status": "Passed",
+            "points_deducted": 0
+        },
+        "FAST": {
+            "status": "Missed",
+            "points_deducted": 10
+        }
+    },
     "score_breakdown": {
         "completeness": {
-            "points_deducted": 40
+            "points_deducted": 45
         },
         "order": {
             "points_deducted": 0
         },
         "timing": {
-            "points_deducted": 0
+            "points_deducted": 3
         },
         "critical_errors": {
             "points_deducted": 0
         }
     },
     "feedback": [
-        "[A] Airway patent (confirmed by patient verbal responsiveness).",
-        "[C] Physician/medical staff was never contacted!",
+        "[A] Airway was not explicitly checked!",
+        "[B] Auscultation of the lungs was not performed!",
+        "[C] Physician / medical staff was never contacted!",
+        "[C] temperature applied late at 403s (target < 300s).",
         "[C] Infusion was never started!",
-        "[C] FAST ultrasound was never performed!",
-        "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!"
+        "[Diagnostics] FAST ultrasound was never performed. (Not required in every scenario — doctor to confirm applicability.)",
+        "[Safety Cap] Score capped at 49 – a life-critical step (Airway/Breathing) was skipped or a fatal clinical error occurred."
     ],
     "critical_errors": []
 }

@@ -24,14 +24,24 @@
             "points_deducted": 10
         },
         "C_Circulation": {
-            "status": "Missed",
-            "points_deducted": 10
+            "status": "Passed",
+            "points_deducted": 0
         },
         "D_Disability": {
             "status": "Passed",
             "points_deducted": 0
         },
         "E_Exposure": {
+            "status": "Passed",
+            "points_deducted": 0
+        }
+    },
+    "further_diagnostics": {
+        "BGA": {
+            "status": "Missed",
+            "points_deducted": 10
+        },
+        "FAST": {
             "status": "Passed",
             "points_deducted": 0
         }
@@ -51,11 +61,11 @@
         }
     },
     "feedback": [
-        "[A] Airway was not checked!",
-        "[B] Breathing was not checked!",
-        "[C] Blood gas analysis (BGA) was never performed!",
-        "CRITICAL ERROR: Decision recorded as 'Koronarangiographie mit PCI' -- PCI/coronary angiography was activated despite a suspected postoperative bleeding!",
-        "[Order] Palpation performed at 164s before breathing was assessed (breathing was never checked)."
+        "[A] Airway was not explicitly checked!",
+        "[B] Breathing was not assessed!",
+        "[Diagnostics] Blood gas analysis (BGA) was never performed. (Not required in every scenario — doctor to confirm applicability.)",
+        "CRITICAL ERROR: Decision recorded as 'Koronarangiographie mit PCI' — PCI/coronary angiography activated despite suspected postoperative bleeding!",
+        "[Order] Palpation performed at 164s before breathing was assessed (breathing never checked)."
     ],
     "critical_errors": [
         "WRONG_DECISION_PCI"

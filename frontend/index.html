@@ -3,113 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR Medical Evaluator</title>
+    <title>VR Medical Evaluator — Dashboard</title>
+    <meta name="description" content="Interactive ABCDE evaluation dashboard for VR medical training sessions.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="dashboard">
-        <header>
-            <h1>🩺 VR Evaluation Dashboard</h1>
-            <p id="session-info">Loading session data...</p>
-        </header>
+<div class="dashboard">
+    <header>
+        <h1>🩺 VR Evaluation Dashboard</h1>
+        <p id="session-info">Loading session data...</p>
+    </header>
 
-        <div class="report-selector">
-            <label for="report-select">Select Student Session:</label>
-            <select id="report-select">
-                <option value="Logs_NST_Alaa_NBA_report.json">Logs_NST_Alaa_NBA</option>
-                <option value="Log_NST_Alaa_NBA_2_report.json">Log_NST_Alaa_NBA_2</option>
-                <option value="Los_NST_Alaa_NBA_3_report.json">Los_NST_Alaa_NBA_3</option>
-                <option value="Log_1_with_time_stamp_report.json">Log_1_with_time_stamp</option>
-                <option value="UKK_VR_LogExport_2026-8-17_10-20-33_report.json">UKK 17.08.2026 – 10:20:33</option>
-                <option value="UKK_VR_LogExport_2026-8-17_10-32-3_report.json">UKK 17.08.2026 – 10:32:03</option>
-                <option value="UKK_VR_LogExport_2026-8-17_11-56-39_report.json">UKK 17.08.2026 – 11:56:39</option>
-                <option value="UKK_VR_LogExport_2026-8-17_11-57-57_report.json">UKK 17.08.2026 – 11:57:57</option>
-                <option value="UKK_VR_LogExport_2026-8-31_15-22-25_NBA_report.json">UKK 31.08.2026 – 15:22:25 (NBA)</option>
-                <option value="UKK_VR_LogExport_2026-8-31_15-57-0_NBA_report.json">UKK 31.08.2026 – 15:57:00 (NBA)</option>
-                <option value="UKK_VR_LogExport_2026-8-31_16-4-32_NBA_report.json">UKK 31.08.2026 – 16:04:32 (NBA)</option>
-                <option value="UKK_VR_LogExport_Stufe%201-Gesund_report.json">Stufe 1 – Gesund</option>
-                <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%201_report.json">Stufe 2 – Hypoglykämie Test 1</option>
-                <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%202_report.json">Stufe 2 – Hypoglykämie Test 2</option>
-                <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%202_with_doc_annotations_report.json">Stufe 2 – Hypoglykämie Test 2 (With Annotations)</option>
-                <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%202_without_doc_annotations_report.json">Stufe 2 – Hypoglykämie Test 2 (Without Annotations)</option>
-            </select>
-        </div>
-
-        <p id="load-error" class="load-error" hidden></p>
-
-        <div class="grid">
-            <!-- Total Score & PDF Download -->
-            <div class="card score-card">
-                <div class="score-header">
-                    <h2>Total Score</h2>
-                    <button id="download-pdf-btn" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
-                </div>
-                <div class="score-circle-container">
-                    <svg class="progress-ring" width="150" height="150">
-                        <circle class="progress-ring__circle-bg" stroke="#e5e7eb" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
-                        <circle class="progress-ring__circle" stroke="#3b82f6" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
-                    </svg>
-                    <div class="score-value">
-                        <span id="total-score">--</span>
-                    </div>
-                </div>
-                <div id="verdict-badge" class="verdict-badge"></div>
-            </div>
-
-            <!-- Coverage Card -->
-            <div class="card coverage-card">
-                <h2>Action Coverage</h2>
-                <div class="coverage-stats">
-                    <div class="stat"><span id="cov-total">--</span><br><small>Total Actions</small></div>
-                    <div class="stat text-green"><span id="cov-eval">--</span><br><small>Evaluated</small></div>
-                    <div class="stat text-red"><span id="cov-unknown">--</span><br><small>Unknown</small></div>
-                </div>
-                <div class="progress-bar-bg">
-                    <div id="coverage-progress" class="progress-bar-fill"></div>
-                </div>
-                <p id="cov-percent-text">--% Covered</p>
-                <details class="unknown-details">
-                    <summary>View Unknown Actions</summary>
-                    <ul id="unknown-list" class="list-container small-list"></ul>
-                </details>
-            </div>
-
-            <!-- Score Breakdown Card -->
-            <div class="card breakdown-card">
-                <h2>Score Breakdown (Deductions)</h2>
-                <ul id="score-breakdown-list" class="list-container">
-                    <li>Loading...</li>
-                </ul>
-            </div>
-
-            <!-- ABCDE Scheme -->
-            <div class="card abcde-card">
-                <h2>Emergency Scheme (ABCDE)</h2>
-                <ul id="abcde-list" class="list-container">
-                    <li>Loading report...</li>
-                </ul>
-            </div>
-
-            <!-- Feedback Log -->
-            <div class="card feedback-card">
-                <h2>Feedback Log</h2>
-                <ul id="feedback-list" class="list-container"></ul>
-            </div>
-
-            <!-- Critical Errors -->
-            <div class="card errors-card">
-                <h2>Critical Errors</h2>
-                <ul id="critical-errors-list" class="list-container"></ul>
-            </div>
-        </div>
+    <div class="report-selector">
+        <label for="report-select">Select Student Session:</label>
+        <select id="report-select">
+            <option value="Logs_NST_Alaa_NBA_report.json">Logs_NST_Alaa_NBA</option>
+            <option value="Log_NST_Alaa_NBA_2_report.json">Log_NST_Alaa_NBA_2</option>
+            <option value="Los_NST_Alaa_NBA_3_report.json">Los_NST_Alaa_NBA_3</option>
+            <option value="Log_1_with_time_stamp_report.json">Log_1_with_time_stamp</option>
+            <option value="UKK_VR_LogExport_2026-8-17_10-20-33_report.json">UKK 17.08.2026 – 10:20:33</option>
+            <option value="UKK_VR_LogExport_2026-8-17_10-32-3_report.json">UKK 17.08.2026 – 10:32:03</option>
+            <option value="UKK_VR_LogExport_2026-8-17_11-56-39_report.json">UKK 17.08.2026 – 11:56:39</option>
+            <option value="UKK_VR_LogExport_2026-8-17_11-57-57_report.json">UKK 17.08.2026 – 11:57:57</option>
+            <option value="UKK_VR_LogExport_2026-8-31_15-22-25_NBA_report.json">UKK 31.08.2026 – 15:22:25 (NBA)</option>
+            <option value="UKK_VR_LogExport_2026-8-31_15-57-0_NBA_report.json">UKK 31.08.2026 – 15:57:00 (NBA)</option>
+            <option value="UKK_VR_LogExport_2026-8-31_16-4-32_NBA_report.json">UKK 31.08.2026 – 16:04:32 (NBA)</option>
+            <option value="UKK_VR_LogExport_Stufe%201-Gesund_report.json">Stufe 1 – Gesund</option>
+            <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%201_report.json">Stufe 2 – Hypoglykämie Test 1</option>
+            <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%202_report.json">Stufe 2 – Hypoglykämie Test 2</option>
+            <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%202_with_doc_annotations_report.json">Stufe 2 – Hypoglykämie Test 2 (Annotated)</option>
+            <option value="UKK_VR_LogExport_Stufe%202-Hypoglyk%C3%A4mie_Test%202_without_doc_annotations_report.json">Stufe 2 – Hypoglykämie Test 2 (No Annotations)</option>
+        </select>
     </div>
 
-    <!-- Add jsPDF for PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js" defer></script>
+    <p id="load-error" class="load-error" hidden></p>
+
+    <div class="grid">
+
+        <!-- ── Score Card ── -->
+        <div class="card score-card">
+            <div class="card-header">
+                <h2>Total Score</h2>
+                <button id="download-pdf-btn" class="btn btn-primary">
+                    <i class="fa-solid fa-file-pdf"></i> Download PDF
+                </button>
+            </div>
+            <div class="score-circle-container">
+                <svg class="progress-ring" width="150" height="150">
+                    <circle class="progress-ring__circle-bg" stroke="#e5e7eb" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
+                    <circle class="progress-ring__circle" stroke="#3b82f6" stroke-width="10" fill="transparent" r="65" cx="75" cy="75"/>
+                </svg>
+                <div class="score-value"><span id="total-score">--</span></div>
+            </div>
+            <p class="score-subtitle">out of 100 points &nbsp;|&nbsp; Pass threshold: 70</p>
+            <div id="verdict-badge" class="verdict-badge"></div>
+        </div>
+
+        <!-- ── Coverage Card ── -->
+        <div class="card coverage-card">
+            <h2>Action Coverage</h2>
+            <div class="coverage-stats">
+                <div class="stat"><span id="cov-total">--</span><small>Total Actions</small></div>
+                <div class="stat text-green"><span id="cov-eval">--</span><small>Evaluated</small></div>
+                <div class="stat text-red"><span id="cov-unknown">--</span><small>Unknown</small></div>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="coverage-progress" class="progress-bar-fill"></div>
+            </div>
+            <p id="cov-percent-text">--% Covered</p>
+            <details class="unknown-details">
+                <summary>View Unknown Actions</summary>
+                <ul id="unknown-list" class="list-container small-list"></ul>
+            </details>
+        </div>
+
+        <!-- ── Score Breakdown Card ── -->
+        <div class="card breakdown-card">
+            <h2>Score Breakdown <span style="font-weight:400;color:#9ca3af;font-size:0.82rem">(deductions)</span></h2>
+            <div id="score-breakdown-bars"></div>
+        </div>
+
+        <!-- ── ABCDE Interactive Card (full width) ── -->
+        <div class="card abcde-card">
+            <div class="card-header">
+                <h2>Emergency Scheme — ABCDE</h2>
+                <span id="abcde-hint" style="font-size:0.8rem;color:#9ca3af">Click a category for details</span>
+            </div>
+            <div class="abcde-grid" id="abcde-grid"></div>
+            <div class="abcde-detail-panel" id="abcde-detail-panel">
+                <div class="detail-panel-header">
+                    <span id="detail-panel-title"></span>
+                    <span class="detail-panel-close" id="detail-panel-close" title="Close">✕</span>
+                </div>
+                <div id="detail-panel-body"></div>
+            </div>
+        </div>
+
+        <!-- ── Feedback Log Card ── -->
+        <div class="card feedback-card" style="grid-column: 1 / -1">
+            <h2>Feedback Log</h2>
+            <ul id="feedback-list" class="list-container"></ul>
+        </div>
+
+        <!-- ── Critical Errors Card ── -->
+        <div class="card errors-card" style="grid-column: 1 / -1">
+            <h2>Critical Errors</h2>
+            <ul id="critical-errors-list" class="list-container"></ul>
+        </div>
+
+    </div><!-- /.grid -->
+</div><!-- /.dashboard -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>

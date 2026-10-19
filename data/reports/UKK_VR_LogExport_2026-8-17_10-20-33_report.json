@@ -1,5 +1,10 @@
 {
-    "session_info": {},
+    "session_info": {
+        "Modul": "Station",
+        "Datum": "17.08.2026",
+        "Start": "10:20:33",
+        "Dauer": "39:57"
+    },
     "overall_score": 33,
     "verdict": "Fail",
     "coverage": {
@@ -53,6 +58,115 @@
         },
         "critical_errors": {
             "points_deducted": 0
+        }
+    },
+    "abcde_detail": {
+        "A_Airway": {
+            "actions": [
+                {
+                    "action": "Airway check (open/look/listen/feel)",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "16:17"
+                }
+            ]
+        },
+        "B_Breathing": {
+            "actions": [
+                {
+                    "action": "Breathing assessment",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:29"
+                },
+                {
+                    "action": "Lung auscultation",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "21:04"
+                }
+            ]
+        },
+        "C_Circulation": {
+            "actions": [
+                {
+                    "action": "Pulse check",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "8:21"
+                },
+                {
+                    "action": "Capillary refill (ReCap)",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "18:29"
+                },
+                {
+                    "action": "Physician contact",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "Medical staff must be contacted within 2 minutes."
+                },
+                {
+                    "action": "Monitoring: pulse oximetry",
+                    "result": "Missed",
+                    "points_deducted": 3,
+                    "note": "Target: within 300s. Never applied."
+                },
+                {
+                    "action": "Monitoring: temperature",
+                    "result": "Missed",
+                    "points_deducted": 3,
+                    "note": "Target: within 300s. Never applied."
+                },
+                {
+                    "action": "Monitoring: blood pressure cuff",
+                    "result": "Late",
+                    "points_deducted": 3,
+                    "time": "11:11",
+                    "note": "Target: < 300s."
+                },
+                {
+                    "action": "Monitoring: 3-lead ECG",
+                    "result": "Late",
+                    "points_deducted": 3,
+                    "time": "10:09",
+                    "note": "Target: < 300s."
+                },
+                {
+                    "action": "Venous access (PVK)",
+                    "result": "Late",
+                    "points_deducted": 5,
+                    "time": "28:04",
+                    "note": "Target: < 300s."
+                },
+                {
+                    "action": "Infusion",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "Infusion must be started within 6 minutes."
+                }
+            ]
+        },
+        "D_Disability": {
+            "actions": [
+                {
+                    "action": "GCS / Neurological assessment",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "Either GCS or neuro exam must be performed within 5 minutes."
+                }
+            ]
+        },
+        "E_Exposure": {
+            "actions": [
+                {
+                    "action": "Undress patient for examination",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "5:52"
+                }
+            ]
         }
     },
     "feedback": [

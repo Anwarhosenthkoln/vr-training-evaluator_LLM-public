@@ -1,5 +1,9 @@
 {
-    "session_info": {},
+    "session_info": {
+        "Modul": "Station",
+        "Datum": "17.08.2026",
+        "Dauer": "25:20"
+    },
     "overall_score": 8,
     "verdict": "Fail",
     "coverage": {
@@ -53,6 +57,117 @@
         },
         "critical_errors": {
             "points_deducted": 25
+        }
+    },
+    "abcde_detail": {
+        "A_Airway": {
+            "actions": [
+                {
+                    "action": "Airway check (open/look/listen/feel)",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "No explicit airway check detected. ERC 2025 requires opening airway, look/listen/feel."
+                }
+            ]
+        },
+        "B_Breathing": {
+            "actions": [
+                {
+                    "action": "Breathing assessment",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "15:13"
+                },
+                {
+                    "action": "Lung auscultation",
+                    "result": "Missed",
+                    "points_deducted": 5,
+                    "note": "Auscultation of the lungs is required as a separate B sub-check (per doctor review)."
+                }
+            ]
+        },
+        "C_Circulation": {
+            "actions": [
+                {
+                    "action": "Pulse check",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "6:52"
+                },
+                {
+                    "action": "Capillary refill (ReCap)",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "7:51"
+                },
+                {
+                    "action": "Physician contact",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "Medical staff must be contacted within 2 minutes."
+                },
+                {
+                    "action": "Monitoring: blood pressure cuff",
+                    "result": "Missed",
+                    "points_deducted": 3,
+                    "note": "Target: within 300s. Never applied."
+                },
+                {
+                    "action": "Monitoring: pulse oximetry",
+                    "result": "Missed",
+                    "points_deducted": 3,
+                    "note": "Target: within 300s. Never applied."
+                },
+                {
+                    "action": "Monitoring: 3-lead ECG",
+                    "result": "Late",
+                    "points_deducted": 3,
+                    "time": "24:05",
+                    "note": "Target: < 300s."
+                },
+                {
+                    "action": "Monitoring: temperature",
+                    "result": "Late",
+                    "points_deducted": 3,
+                    "time": "10:45",
+                    "note": "Target: < 300s."
+                },
+                {
+                    "action": "Venous access (PVK)",
+                    "result": "Late",
+                    "points_deducted": 5,
+                    "time": "8:00",
+                    "note": "Target: < 300s."
+                },
+                {
+                    "action": "Infusion",
+                    "result": "Late",
+                    "points_deducted": 5,
+                    "time": "11:43",
+                    "note": "Target: < 360s."
+                }
+            ]
+        },
+        "D_Disability": {
+            "actions": [
+                {
+                    "action": "GCS / Neurological assessment",
+                    "result": "Late",
+                    "points_deducted": 5,
+                    "time": "22:03",
+                    "note": "Target: < 300s."
+                }
+            ]
+        },
+        "E_Exposure": {
+            "actions": [
+                {
+                    "action": "Undress patient for examination",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "0:00"
+                }
+            ]
         }
     },
     "feedback": [

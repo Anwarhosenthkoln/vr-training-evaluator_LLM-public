@@ -60,6 +60,112 @@
             "points_deducted": 25
         }
     },
+    "abcde_detail": {
+        "A_Airway": {
+            "actions": [
+                {
+                    "action": "Airway check (open/look/listen/feel)",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "No explicit airway check detected. ERC 2025 requires opening airway, look/listen/feel."
+                }
+            ]
+        },
+        "B_Breathing": {
+            "actions": [
+                {
+                    "action": "Breathing assessment",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "Basic breathing check (respiratory rate, effort) was not performed."
+                },
+                {
+                    "action": "Lung auscultation",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "5:58"
+                }
+            ]
+        },
+        "C_Circulation": {
+            "actions": [
+                {
+                    "action": "Pulse check",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "3:30"
+                },
+                {
+                    "action": "Capillary refill (ReCap)",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "3:23"
+                },
+                {
+                    "action": "Physician contact",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "1:59"
+                },
+                {
+                    "action": "Monitoring: blood pressure cuff",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "3:48"
+                },
+                {
+                    "action": "Monitoring: 3-lead ECG",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "3:48"
+                },
+                {
+                    "action": "Monitoring: pulse oximetry",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "3:49"
+                },
+                {
+                    "action": "Monitoring: temperature",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "4:33"
+                },
+                {
+                    "action": "Venous access (PVK)",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:39"
+                },
+                {
+                    "action": "Infusion",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "4:08"
+                }
+            ]
+        },
+        "D_Disability": {
+            "actions": [
+                {
+                    "action": "GCS / Neurological assessment",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "3:03"
+                }
+            ]
+        },
+        "E_Exposure": {
+            "actions": [
+                {
+                    "action": "Undress patient for examination",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:12"
+                }
+            ]
+        }
+    },
     "feedback": [
         "[A] Airway was not explicitly checked!",
         "[B] Breathing was not assessed!",

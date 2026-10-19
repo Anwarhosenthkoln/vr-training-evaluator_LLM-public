@@ -64,6 +64,118 @@
             "points_deducted": 35
         }
     },
+    "abcde_detail": {
+        "A_Airway": {
+            "actions": [
+                {
+                    "action": "Airway check (open/look/listen/feel)",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "No explicit airway check detected. ERC 2025 requires opening airway, look/listen/feel."
+                }
+            ]
+        },
+        "B_Breathing": {
+            "actions": [
+                {
+                    "action": "Breathing assessment",
+                    "result": "Missed",
+                    "points_deducted": 10,
+                    "note": "Basic breathing check (respiratory rate, effort) was not performed."
+                },
+                {
+                    "action": "Lung auscultation",
+                    "result": "Missed",
+                    "points_deducted": 5,
+                    "note": "Auscultation of the lungs is required as a separate B sub-check (per doctor review)."
+                }
+            ]
+        },
+        "C_Circulation": {
+            "actions": [
+                {
+                    "action": "Pulse check",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "0:35"
+                },
+                {
+                    "action": "Capillary refill (ReCap)",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:16"
+                },
+                {
+                    "action": "Physician contact",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "0:42"
+                },
+                {
+                    "action": "Monitoring: blood pressure cuff",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:50"
+                },
+                {
+                    "action": "Monitoring: 3-lead ECG",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:52"
+                },
+                {
+                    "action": "Monitoring: pulse oximetry",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:50"
+                },
+                {
+                    "action": "Monitoring: temperature",
+                    "result": "Missed",
+                    "points_deducted": 3,
+                    "note": "Target: within 300s. Never applied."
+                },
+                {
+                    "action": "Venous access (PVK)",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:03"
+                },
+                {
+                    "action": "Infusion",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "3:03"
+                }
+            ]
+        },
+        "D_Disability": {
+            "actions": [
+                {
+                    "action": "GCS / Neurological assessment",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "2:25"
+                },
+                {
+                    "action": "Blood sugar measurement",
+                    "result": "Not Required",
+                    "points_deducted": 0,
+                    "note": "GCS was normal — not mandatory."
+                }
+            ]
+        },
+        "E_Exposure": {
+            "actions": [
+                {
+                    "action": "Undress patient for examination",
+                    "result": "Completed",
+                    "points_deducted": 0,
+                    "time": "1:36"
+                }
+            ]
+        }
+    },
     "feedback": [
         "[A] Airway was not explicitly checked!",
         "[B] Breathing was not assessed!",

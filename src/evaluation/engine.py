@@ -24,25 +24,36 @@ from scoring import (
 
 # ---------------------------------------------------------------------------
 # Helper: accept an action if the student did it personally OR delegated it.
-# The parser maps "NPC beauftragen → Ultraschall" to DELEGATE_ULTRASOUND_FAST etc.
-# For clinical completeness either form counts (Step 19 explicitly wants delegation).
 # ---------------------------------------------------------------------------
 def _has_action_or_delegate(events, base_codes):
-    """Return True if any event matches base_codes OR DELEGATE_<base_code>."""
     delegate_codes = [f"DELEGATE_{c}" for c in base_codes]
     return has_event(events, base_codes + delegate_codes)
 
 
 def _first_time_action_or_delegate(events, base_codes):
-    """Earliest time the action was done directly or by delegation."""
     delegate_codes = [f"DELEGATE_{c}" for c in base_codes]
     return first_event_time(events, base_codes + delegate_codes)
+
+
+def _action_entry(name, result, time_s=None, note=None, points_deducted=0):
+    """Build a structured action entry for abcde_detail."""
+    entry = {
+        "action": name,
+        "result": result,        # "Completed", "Missed", "Late", "Wrong Order"
+        "points_deducted": points_deducted,
+    }
+    if time_s is not None:
+        mins, secs = divmod(int(time_s), 60)
+        entry["time"] = f"{mins}:{secs:02d}"
+    if note:
+        entry["note"] = note
+    return entry
 
 
 def evaluate_session(parsed_session_path, output_report_path):
     """
     Reads a parsed JSON file and applies the ABCDE medical rules to generate
-    a scoring report.
+    a scoring report with per-category action detail.
 
     Rules updated October 2026 per VR_Scoring_Weights_Doctor_Review_NBA.pdf
     and ERC Guidelines 2025.
@@ -50,12 +61,26 @@ def evaluate_session(parsed_session_path, output_report_path):
     with open(parsed_session_path, 'r', encoding='utf-8') as f:
         session_data = json.load(f)
 
-    # Person A's parser emits two shapes: a bare list (from .txt logs) or
-    # {"metadata", "events", "vital_parameters"} (from .docx logs).
     if isinstance(session_data, list):
         events = session_data
-        metadata = {}
         vitals = []
+        # Derive metadata from filename + events for bare-list logs (old TXT format)
+        basename = os.path.splitext(os.path.basename(parsed_session_path))[0]
+        metadata = {"Modul": "Station"}
+        # Extract date & time from filenames like UKK_VR_LogExport_2026-8-17_10-20-33
+        import re as _re
+        m = _re.search(r'(\d{4})-(\d{1,2})-(\d{1,2})(?:[_-](\d{1,2})-(\d{2})-(\d{2}))?', basename)
+        if m:
+            yr, mo, dy = m.group(1), m.group(2).zfill(2), m.group(3).zfill(2)
+            metadata["Datum"] = f"{dy}.{mo}.{yr}"
+            if m.group(4):
+                metadata["Start"] = f"{m.group(4).zfill(2)}:{m.group(5)}:{m.group(6)}"
+        else:
+            metadata["Datum"] = basename
+        # Duration from last event's sim_time
+        timed = [e for e in events if e.get("sim_time") and e.get("sim_time") != "0:00"]
+        if timed:
+            metadata["Dauer"] = timed[-1]["sim_time"]
     else:
         events = session_data.get('events', [])
         metadata = session_data.get('metadata', {})
@@ -84,64 +109,100 @@ def evaluate_session(parsed_session_path, output_report_path):
     # ------------------------------------------------------------------
     # A: Airway
     # ------------------------------------------------------------------
-    # FIX: Doctor review (→ not acceptable) reversed the previous "patient speaks
-    # = airway clear" shortcut. An explicit airway check is now always required.
-    # ERC 2025 Adult BLS: open the airway, look/listen/feel.
+    a_actions = []
     if has_event(events, ["CHECK_AIRWAY"]):
+        t = first_event_time(events, ["CHECK_AIRWAY"])
+        a_actions.append(_action_entry("Airway check (open/look/listen/feel)", "Completed", t))
         report["abcde_breakdown"]["A_Airway"]["status"] = "Passed"
     else:
+        a_actions.append(_action_entry(
+            "Airway check (open/look/listen/feel)", "Missed",
+            note="No explicit airway check detected. ERC 2025 requires opening airway, look/listen/feel.",
+            points_deducted=POINTS["MISSING_AIRWAY"]
+        ))
         report["abcde_breakdown"]["A_Airway"]["points_deducted"] = POINTS["MISSING_AIRWAY"]
         report["feedback"].append("[A] Airway was not explicitly checked!")
         deduct(report, POINTS["MISSING_AIRWAY"], "completeness")
 
+    report["abcde_detail"]["A_Airway"]["actions"] = a_actions
+
     # ------------------------------------------------------------------
     # B: Breathing
     # ------------------------------------------------------------------
-    # Doctor added: auscultation of the lungs as a separate B sub-check.
+    b_actions = []
     b_passed = True
     b_points = 0
 
     if has_event(events, ["CHECK_BREATHING"]):
-        pass  # basic breathing assessment done
+        t = first_event_time(events, ["CHECK_BREATHING"])
+        b_actions.append(_action_entry("Breathing assessment", "Completed", t))
     else:
         b_passed = False
         b_points += POINTS["MISSING_BREATHING"]
+        b_actions.append(_action_entry(
+            "Breathing assessment", "Missed",
+            note="Basic breathing check (respiratory rate, effort) was not performed.",
+            points_deducted=POINTS["MISSING_BREATHING"]
+        ))
         report["feedback"].append("[B] Breathing was not assessed!")
         deduct(report, POINTS["MISSING_BREATHING"], "completeness")
 
-    if not has_event(events, ["AUSCULTATION"]):
+    if has_event(events, ["AUSCULTATION"]):
+        t = first_event_time(events, ["AUSCULTATION"])
+        b_actions.append(_action_entry("Lung auscultation", "Completed", t))
+    else:
         b_passed = False
         b_points += POINTS["MISSING_AUSCULTATION"]
+        b_actions.append(_action_entry(
+            "Lung auscultation", "Missed",
+            note="Auscultation of the lungs is required as a separate B sub-check (per doctor review).",
+            points_deducted=POINTS["MISSING_AUSCULTATION"]
+        ))
         report["feedback"].append("[B] Auscultation of the lungs was not performed!")
         deduct(report, POINTS["MISSING_AUSCULTATION"], "completeness")
 
     report["abcde_breakdown"]["B_Breathing"]["status"] = "Passed" if b_passed else "Missed"
     report["abcde_breakdown"]["B_Breathing"]["points_deducted"] = b_points
+    report["abcde_detail"]["B_Breathing"]["actions"] = b_actions
 
     # ------------------------------------------------------------------
     # C: Circulation
-    # Covers pulse, capillary refill, physician contact, monitoring panel,
-    # venous access, and infusion.
-    # FIX: BGA and FAST are moved to "Further Diagnostics" (post-ABCDE) per doctor.
-    # FIX: Delegated tasks (DELEGATE_*) now count as done.
     # ------------------------------------------------------------------
+    c_actions = []
     c_points_deducted = 0
     c_passed = True
 
-    if not has_event(events, ["CHECK_PULSE"]):
+    # Pulse
+    if has_event(events, ["CHECK_PULSE"]):
+        t = first_event_time(events, ["CHECK_PULSE"])
+        c_actions.append(_action_entry("Pulse check", "Completed", t))
+    else:
         c_passed = False
         c_points_deducted += POINTS["MISSING_PULSE"]
+        c_actions.append(_action_entry(
+            "Pulse check", "Missed",
+            note="Pulse assessment is mandatory in C-Circulation.",
+            points_deducted=POINTS["MISSING_PULSE"]
+        ))
         report["feedback"].append("[C] Pulse was not checked!")
         deduct(report, POINTS["MISSING_PULSE"], "completeness")
 
-    if not has_event(events, ["RECAP_TIME"]):
+    # Capillary refill
+    if has_event(events, ["RECAP_TIME"]):
+        t = first_event_time(events, ["RECAP_TIME"])
+        c_actions.append(_action_entry("Capillary refill (ReCap)", "Completed", t))
+    else:
         c_passed = False
         c_points_deducted += POINTS["MISSING_RECAP_CHECK"]
+        c_actions.append(_action_entry(
+            "Capillary refill (ReCap)", "Missed",
+            note="Capillary refill time assesses peripheral perfusion.",
+            points_deducted=POINTS["MISSING_RECAP_CHECK"]
+        ))
         report["feedback"].append("[C] Capillary refill / recap time was never assessed!")
         deduct(report, POINTS["MISSING_RECAP_CHECK"], "completeness")
 
-    # Physician contact: check for any delegation to Arzt/medical staff.
-    # The parser stores "NPC beauftragen" → details contain "medizin" / "arzt".
+    # Physician contact
     staff_time = first_event_time_matching(
         events,
         lambda e: e.get("action_code") in ("DELEGATE_NPC", "CALL_PHYSICIAN")
@@ -150,17 +211,29 @@ def evaluate_session(parsed_session_path, output_report_path):
     if staff_time is None:
         c_passed = False
         c_points_deducted += POINTS["MISSING_STAFF_CONTACT"]
+        c_actions.append(_action_entry(
+            "Physician contact", "Missed",
+            note="Medical staff must be contacted within 2 minutes.",
+            points_deducted=POINTS["MISSING_STAFF_CONTACT"]
+        ))
         report["feedback"].append("[C] Physician / medical staff was never contacted!")
         deduct(report, POINTS["MISSING_STAFF_CONTACT"], "completeness")
     elif staff_time > STAFF_CONTACT_TIME_LIMIT:
         c_passed = False
         c_points_deducted += POINTS["LATE_STAFF_CONTACT"]
+        c_actions.append(_action_entry(
+            "Physician contact", "Late", staff_time,
+            note=f"Target: < {STAFF_CONTACT_TIME_LIMIT}s (2 min). Actual: {staff_time}s.",
+            points_deducted=POINTS["LATE_STAFF_CONTACT"]
+        ))
         report["feedback"].append(
             f"[C] Physician contacted late at {staff_time}s (target < {STAFF_CONTACT_TIME_LIMIT}s / 2 min)."
         )
         deduct(report, POINTS["LATE_STAFF_CONTACT"], "timing")
+    else:
+        c_actions.append(_action_entry("Physician contact", "Completed", staff_time))
 
-    # Monitoring panel (all four required within 5 min per updated limit).
+    # Monitoring panel
     missing_signals = []
     late_signals = []
     any_monitoring_done = False
@@ -172,10 +245,18 @@ def evaluate_session(parsed_session_path, output_report_path):
             any_monitoring_done = True
             if t > MONITORING_TIME_LIMIT:
                 late_signals.append((label, t))
+            else:
+                c_actions.append(_action_entry(f"Monitoring: {label}", "Completed", t))
 
     if not any_monitoring_done:
         c_passed = False
         c_points_deducted += POINTS["MISSING_ALL_MONITORING"]
+        for code, label in MONITORING_SIGNALS.items():
+            c_actions.append(_action_entry(
+                f"Monitoring: {label}", "Missed",
+                note="No monitoring equipment applied at all.",
+                points_deducted=POINTS["MONITORING_SIGNAL_ISSUE"]
+            ))
         report["feedback"].append("[C] Critical: No monitoring equipment (BP/ECG/SpO2/temperature) applied!")
         report["critical_errors"].append("MISSING_STEP_MONITORING")
         deduct(report, POINTS["MISSING_ALL_MONITORING"], "completeness")
@@ -184,6 +265,12 @@ def evaluate_session(parsed_session_path, output_report_path):
             c_passed = False
             amount = POINTS["MONITORING_SIGNAL_ISSUE"] * len(missing_signals)
             c_points_deducted += amount
+            for label in missing_signals:
+                c_actions.append(_action_entry(
+                    f"Monitoring: {label}", "Missed",
+                    note=f"Target: within {MONITORING_TIME_LIMIT}s. Never applied.",
+                    points_deducted=POINTS["MONITORING_SIGNAL_ISSUE"]
+                ))
             report["feedback"].append(
                 f"[C] Monitoring incomplete, never applied: {', '.join(missing_signals)}."
             )
@@ -191,48 +278,78 @@ def evaluate_session(parsed_session_path, output_report_path):
         for label, t in late_signals:
             c_passed = False
             c_points_deducted += POINTS["MONITORING_SIGNAL_ISSUE"]
+            c_actions.append(_action_entry(
+                f"Monitoring: {label}", "Late", t,
+                note=f"Target: < {MONITORING_TIME_LIMIT}s.",
+                points_deducted=POINTS["MONITORING_SIGNAL_ISSUE"]
+            ))
             report["feedback"].append(
                 f"[C] {label} applied late at {t}s (target < {MONITORING_TIME_LIMIT}s)."
             )
             deduct(report, POINTS["MONITORING_SIGNAL_ISSUE"], "timing")
 
-    # IV access (student or delegated to nurse).
+    # IV access
     iv_time = _first_time_action_or_delegate(events, ["IV_ACCESS"])
     if iv_time is None:
         c_passed = False
         c_points_deducted += POINTS["MISSING_VENOUS_ACCESS"]
+        c_actions.append(_action_entry(
+            "Venous access (PVK)", "Missed",
+            note="IV access must be established within 5 minutes.",
+            points_deducted=POINTS["MISSING_VENOUS_ACCESS"]
+        ))
         report["feedback"].append("[C] Venous access (PVK) was never established!")
         deduct(report, POINTS["MISSING_VENOUS_ACCESS"], "completeness")
     elif iv_time > VENOUS_ACCESS_TIME_LIMIT:
         c_passed = False
         c_points_deducted += POINTS["LATE_VENOUS_ACCESS"]
+        c_actions.append(_action_entry(
+            "Venous access (PVK)", "Late", iv_time,
+            note=f"Target: < {VENOUS_ACCESS_TIME_LIMIT}s.",
+            points_deducted=POINTS["LATE_VENOUS_ACCESS"]
+        ))
         report["feedback"].append(
             f"[C] Venous access established late at {iv_time}s (target < {VENOUS_ACCESS_TIME_LIMIT}s)."
         )
         deduct(report, POINTS["LATE_VENOUS_ACCESS"], "timing")
+    else:
+        c_actions.append(_action_entry("Venous access (PVK)", "Completed", iv_time))
 
-    # Infusion (student or delegated).
+    # Infusion
     infusion_time = _first_time_action_or_delegate(events, ["INFUSION"])
     if infusion_time is None:
         c_passed = False
         c_points_deducted += POINTS["MISSING_INFUSION"]
+        c_actions.append(_action_entry(
+            "Infusion", "Missed",
+            note="Infusion must be started within 6 minutes.",
+            points_deducted=POINTS["MISSING_INFUSION"]
+        ))
         report["feedback"].append("[C] Infusion was never started!")
         deduct(report, POINTS["MISSING_INFUSION"], "completeness")
     elif infusion_time > INFUSION_TIME_LIMIT:
         c_passed = False
         c_points_deducted += POINTS["LATE_INFUSION"]
+        c_actions.append(_action_entry(
+            "Infusion", "Late", infusion_time,
+            note=f"Target: < {INFUSION_TIME_LIMIT}s.",
+            points_deducted=POINTS["LATE_INFUSION"]
+        ))
         report["feedback"].append(
             f"[C] Infusion started late at {infusion_time}s (target < {INFUSION_TIME_LIMIT}s)."
         )
         deduct(report, POINTS["LATE_INFUSION"], "timing")
+    else:
+        c_actions.append(_action_entry("Infusion", "Completed", infusion_time))
 
     report["abcde_breakdown"]["C_Circulation"]["status"] = "Passed" if c_passed else "Missed"
     report["abcde_breakdown"]["C_Circulation"]["points_deducted"] = c_points_deducted
+    report["abcde_detail"]["C_Circulation"]["actions"] = c_actions
 
     # ------------------------------------------------------------------
     # D: Disability
-    # FIX: GCS_CHECK and NEURO_EXAM are now both accepted (Step 6 says either).
     # ------------------------------------------------------------------
+    d_actions = []
     d_points_deducted = 0
     d_passed = True
 
@@ -240,47 +357,79 @@ def evaluate_session(parsed_session_path, output_report_path):
     if gcs_time is None:
         d_passed = False
         d_points_deducted += POINTS["MISSING_GCS"]
+        d_actions.append(_action_entry(
+            "GCS / Neurological assessment", "Missed",
+            note="Either GCS or neuro exam must be performed within 5 minutes.",
+            points_deducted=POINTS["MISSING_GCS"]
+        ))
         report["feedback"].append("[D] GCS / neurological status was never assessed!")
         deduct(report, POINTS["MISSING_GCS"], "completeness")
     elif gcs_time > GCS_TIME_LIMIT:
         d_passed = False
         d_points_deducted += POINTS["LATE_GCS"]
+        d_actions.append(_action_entry(
+            "GCS / Neurological assessment", "Late", gcs_time,
+            note=f"Target: < {GCS_TIME_LIMIT}s.",
+            points_deducted=POINTS["LATE_GCS"]
+        ))
         report["feedback"].append(
             f"[D] GCS / neuro assessment late at {gcs_time}s (target < {GCS_TIME_LIMIT}s)."
         )
         deduct(report, POINTS["LATE_GCS"], "timing")
+    else:
+        d_actions.append(_action_entry("GCS / Neurological assessment", "Completed", gcs_time))
 
-    # Blood sugar only required when consciousness is altered (GCS < 15).
-    # Doctor note: BGA may contain blood sugar — check both BGA and BLOOD_SUGAR.
     if vitals:
         consciousness_altered = any(
             v.get("gcs") is not None and v.get("gcs") < 15 for v in vitals
         )
-        if consciousness_altered and not _has_action_or_delegate(events, ["BLOOD_SUGAR", "BLOOD_GAS_ANALYSIS"]):
-            d_passed = False
-            d_points_deducted += POINTS["MISSING_BLOOD_SUGAR_CHECK"]
-            report["feedback"].append(
-                "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!"
-            )
-            deduct(report, POINTS["MISSING_BLOOD_SUGAR_CHECK"], "completeness")
+        if consciousness_altered:
+            if _has_action_or_delegate(events, ["BLOOD_SUGAR", "BLOOD_GAS_ANALYSIS"]):
+                t = first_event_time(events, ["BLOOD_SUGAR", "BLOOD_GAS_ANALYSIS"])
+                d_actions.append(_action_entry("Blood sugar measurement", "Completed", t,
+                                               note="Required because GCS < 15."))
+            else:
+                d_passed = False
+                d_points_deducted += POINTS["MISSING_BLOOD_SUGAR_CHECK"]
+                d_actions.append(_action_entry(
+                    "Blood sugar measurement", "Missed",
+                    note="Required because patient had GCS < 15 (altered consciousness).",
+                    points_deducted=POINTS["MISSING_BLOOD_SUGAR_CHECK"]
+                ))
+                report["feedback"].append(
+                    "[D] Consciousness was altered (GCS < 15) but blood sugar was never measured!"
+                )
+                deduct(report, POINTS["MISSING_BLOOD_SUGAR_CHECK"], "completeness")
+        else:
+            d_actions.append(_action_entry("Blood sugar measurement", "Not Required",
+                                           note="GCS was normal — not mandatory."))
 
     report["abcde_breakdown"]["D_Disability"]["status"] = "Passed" if d_passed else "Missed"
     report["abcde_breakdown"]["D_Disability"]["points_deducted"] = d_points_deducted
+    report["abcde_detail"]["D_Disability"]["actions"] = d_actions
 
     # ------------------------------------------------------------------
     # E: Exposure
     # ------------------------------------------------------------------
+    e_actions = []
     if has_event(events, ["UNDRESS_PATIENT"]):
+        t = first_event_time(events, ["UNDRESS_PATIENT"])
+        e_actions.append(_action_entry("Undress patient for examination", "Completed", t))
         report["abcde_breakdown"]["E_Exposure"]["status"] = "Passed"
     else:
+        e_actions.append(_action_entry(
+            "Undress patient for examination", "Missed",
+            note="Patient must be exposed to allow full head-to-toe assessment.",
+            points_deducted=POINTS["MISSING_UNDRESS"]
+        ))
         report["abcde_breakdown"]["E_Exposure"]["points_deducted"] = POINTS["MISSING_UNDRESS"]
         report["feedback"].append("[E] Patient was never undressed for examination!")
         deduct(report, POINTS["MISSING_UNDRESS"], "completeness")
 
+    report["abcde_detail"]["E_Exposure"]["actions"] = e_actions
+
     # ------------------------------------------------------------------
     # Further Diagnostics (post-ABCDE)
-    # Doctor: BGA and FAST do NOT belong to C; they are further diagnostics.
-    # Still scored, but separated from ABCDE breakdown.
     # ------------------------------------------------------------------
     bga_time = _first_time_action_or_delegate(events, ["BLOOD_GAS_ANALYSIS"])
     if bga_time is None:
@@ -322,8 +471,6 @@ def evaluate_session(parsed_session_path, output_report_path):
 
     # ------------------------------------------------------------------
     # Step 4: Shock position without clinical indication
-    # Doctor: also flag shock position when only dyspnoea or angina pectoris
-    # is present without prior circulation check.
     # ------------------------------------------------------------------
     shock_indication_time = first_event_time(events, ["RECAP_TIME", "CHECK_PULSE"])
     shock_position_events = [
@@ -372,7 +519,6 @@ def evaluate_session(parsed_session_path, output_report_path):
                 )
                 deduct(report, POINTS["UNINDICATED_ANESTHESIA_INDUCTION"], "critical_errors")
 
-    # Doctor: intubation without capnography is a critical error.
     if intubation_events:
         capnography_codes = ["CAPNOGRAPHY", "CAPNOGRAPHY_APPLY", "CO2_CHECK"]
         if not has_event(events, capnography_codes):
@@ -383,7 +529,6 @@ def evaluate_session(parsed_session_path, output_report_path):
             )
             deduct(report, POINTS["INTUBATION_WITHOUT_CAPNOGRAPHY"], "critical_errors")
 
-        # Doctor: airway must be checked BEFORE intubation.
         airway_check_time = first_event_time(events, ["CHECK_AIRWAY"])
         intubation_time = min(e.get("sim_time_seconds", 0) for e in intubation_events)
         if airway_check_time is None or intubation_time < airway_check_time:
@@ -394,7 +539,6 @@ def evaluate_session(parsed_session_path, output_report_path):
             )
             deduct(report, POINTS["INTUBATION_WITHOUT_AIRWAY_CHECK"], "critical_errors")
 
-    # Oxygen without indication checks (NOT safety-cap triggers, only deductions).
     if vitals:
         chest_pain_scenario = any(
             kw in str(metadata).lower() for kw in ("angina", "chest pain", "brustschmerz")
@@ -406,7 +550,6 @@ def evaluate_session(parsed_session_path, output_report_path):
                 spo2 = vital.get("spo2_percent") if vital else None
                 if spo2 is not None:
                     if spo2 > 96 and not already_flagged_o2:
-                        # ERC 2025: do NOT routinely give supplemental O2 if SpO2 > 96%
                         report["critical_errors"].append("OXYGEN_WITHOUT_INDICATION")
                         report["feedback"].append(
                             f"ERROR: Oxygen given at {e.get('sim_time')} while SpO2 was {spo2}% "
@@ -416,7 +559,6 @@ def evaluate_session(parsed_session_path, output_report_path):
                         deduct(report, POINTS["OXYGEN_WITHOUT_INDICATION"], "critical_errors")
                         already_flagged_o2 = True
                     elif chest_pain_scenario and spo2 > 90 and not already_flagged_o2:
-                        # ERC 2025: in chest pain / ACS, O2 only if SpO2 < 90%
                         report["critical_errors"].append("OXYGEN_CHEST_PAIN_WITHOUT_INDICATION")
                         report["feedback"].append(
                             f"ERROR: Oxygen given to a chest pain patient at SpO2 {spo2}% "
@@ -425,7 +567,6 @@ def evaluate_session(parsed_session_path, output_report_path):
                         deduct(report, POINTS["OXYGEN_CHEST_PAIN_WITHOUT_INDICATION"], "critical_errors")
                         already_flagged_o2 = True
 
-        # Doctor: skipping O2 for a critical patient (SpO2 < 90%) is also flagged.
         if vitals:
             critical_spo2 = any(
                 v.get("spo2_percent") is not None and v.get("spo2_percent") < 90 for v in vitals
@@ -438,25 +579,17 @@ def evaluate_session(parsed_session_path, output_report_path):
                 )
                 deduct(report, POINTS["SKIPPED_OXYGEN_CRITICAL_PATIENT"], "critical_errors")
 
-        # Doctor: not starting CPR when patient does not breathe or HR < 30.
-        unresponsive = any(
-            v.get("gcs") is not None and v.get("gcs") <= 8 for v in vitals
-        )
-        very_low_hr = any(
-            v.get("heart_rate") is not None and v.get("heart_rate") < 30 for v in vitals
-        )
-        apnea = any(
-            v.get("respiratory_rate") is not None and v.get("respiratory_rate") == 0 for v in vitals
-        )
-        if (very_low_hr or apnea) and not has_event(events, ["CPR"]):
-            report["critical_errors"].append("MISSED_CPR_INDICATION")
-            report["feedback"].append(
-                "CRITICAL ERROR: Patient had HR < 30 / apnea but CPR was never started! "
-                "(ERC 2025 Adult BLS: start CPR immediately for cardiac arrest.)"
-            )
-            deduct(report, POINTS["MISSED_CPR_INDICATION"], "critical_errors")
+            unresponsive = any(v.get("gcs") is not None and v.get("gcs") <= 8 for v in vitals)
+            very_low_hr = any(v.get("heart_rate") is not None and v.get("heart_rate") < 30 for v in vitals)
+            apnea = any(v.get("respiratory_rate") is not None and v.get("respiratory_rate") == 0 for v in vitals)
+            if (very_low_hr or apnea) and not has_event(events, ["CPR"]):
+                report["critical_errors"].append("MISSED_CPR_INDICATION")
+                report["feedback"].append(
+                    "CRITICAL ERROR: Patient had HR < 30 / apnea but CPR was never started! "
+                    "(ERC 2025 Adult BLS: start CPR immediately for cardiac arrest.)"
+                )
+                deduct(report, POINTS["MISSED_CPR_INDICATION"], "critical_errors")
 
-    # Wrong definitive management decision.
     decision = str(metadata.get("Entscheidung", "")).lower()
     if "pci" in decision or "koronarangiographie" in decision:
         report["critical_errors"].append("WRONG_DECISION_PCI")
@@ -467,7 +600,7 @@ def evaluate_session(parsed_session_path, output_report_path):
         deduct(report, POINTS["WRONG_DECISION_PCI"], "critical_errors")
 
     # ------------------------------------------------------------------
-    # Order / Dependency Checks ("Reihenfolge / Abhängigkeiten")
+    # Order / Dependency Checks
     # ------------------------------------------------------------------
     first_monitor_time = _first_time_action_or_delegate(events, list(MONITORING_SIGNALS.keys()))
     catecholamine_admins = [
@@ -506,7 +639,6 @@ def evaluate_session(parsed_session_path, output_report_path):
         )
         deduct(report, POINTS["ORDER_INFUSION_PREPARED_NOT_ADMINISTERED"], "order")
 
-    # FAST before palpation (use delegated time too).
     fast_order_time = _first_time_action_or_delegate(events, ["ULTRASOUND_FAST"])
     palpation_time = first_event_time(events, ["PALPATION"])
     if fast_order_time is not None and palpation_time is not None and fast_order_time < palpation_time:
@@ -516,7 +648,6 @@ def evaluate_session(parsed_session_path, output_report_path):
         )
         deduct(report, POINTS["ORDER_FAST_BEFORE_PALPATION"], "order")
 
-    # Breathing should be assessed before pulse or palpation.
     breathing_time = first_event_time(events, ["CHECK_BREATHING"])
     pulse_time = first_event_time(events, ["CHECK_PULSE"])
     earlier_action = None
@@ -534,7 +665,7 @@ def evaluate_session(parsed_session_path, output_report_path):
         deduct(report, POINTS["ORDER_ASSESSMENT_BEFORE_BREATHING"], "order")
 
     # ------------------------------------------------------------------
-    # Apply safety cap and verdict
+    # Final scoring
     # ------------------------------------------------------------------
     apply_safety_cap(report)
     apply_verdict(report)

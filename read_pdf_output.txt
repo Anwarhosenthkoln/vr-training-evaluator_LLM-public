@@ -1,0 +1,150 @@
+Pages: 4
+
+=============== PAGE 1 ===============
+  Scoring Weights – Doctor Review
+  VR Medical Training Evaluation · Values currently used by the scoring engine (src/evaluation/scoring.py) ·
+  October 2026
+  How to use this document
+  The tables below list every time limit and point value the scoring engine currently uses. All of them are
+  placeholders based on “Ablauf_Notfall auf Normalstation_NBA.docx” and need medical review.
+  • Leave New value empty if the current value is fine.
+  • Enter a different number in New value to change it.
+  • Use Comments for reasoning, conditions, or if a rule should be removed or worded differently.
+  • Rows can be added at the end of any table for rules that are missing.
+  Shaded columns are for your input. Each session starts at 100 points and the deductions below are
+  subtracted from that.
+  1. Time limits
+  If an action happens after this limit, a timing deduction applies (see Section 3). Times are measured from
+  the start of the simulation.
+  Action Current limit New value Comments
+  Physician / staff contact (Step 5) 10 min 2 What is STEP 1-4?
+  GCS / neuro check (Step 6) 5 min Neuro Check and GCS belong to
+  D
+  Full monitoring – BP, ECG, SpO2, 10 min 5
+  temperature, all four (Step 7)
+  Venous access, PVK (Step 10) 20 min 5
+  Infusion started (Step 11) 22 min 6
+  Blood gas analysis, BGA (Step 12) 25 min 10 Not necessary in every scenario
+  FAST ultrasound (Step 13) 30 min 10 Not necessary in every scenario
+  2. Missing actions (completeness)
+  Deducted when an action never happens in the session.
+  Missing action Current points New value Comments
+  Airway check (A) −10
+  Breathing check (B) −10 add as separate point:
+  auscultation of the lungs (B)
+  Pulse check (C) −10
+  Capillary refill / recap time (C) −5
+  Physician contact (C) −10
+  No monitoring applied at all (C) −15
+  Scoring Weights – Doctor Review · Page 1
+
+=============== PAGE 2 ===============
+  Missing action Current points New value Comments
+  Each individual monitoring item never −3 each
+  applied (BP / ECG / SpO2 /
+  temperature)
+  Venous access (C) −10
+  Infusion (C) −10
+  Blood gas analysis (C) −10 Not necessary in every scenario
+  BGA does not belong to C
+  It belongs to further diagnostics
+  and should be performed after
+  ABCDE (sometimes delegation
+  to a nurse during ABCDE ist
+  possible)
+  FAST ultrasound (C) −10
+  Not necessary in every scenario
+  FAST does not belong to C
+  It belongs to further diagnostics
+  and should be performed after
+  ABCDE
+  GCS / neuro check (D) −10
+  Blood sugar – only if GCS < 15 (D) −10 CAVE:BGA contains blood sugar
+  Patient undressed (E) −10
+  3. Late actions (timing)
+  Deducted when the action happens, but after the limit in Section 1.
+  Late action Current points New value Comments
+  Physician contact late −5
+  Each monitoring item applied late −3 each
+  GCS / neuro check late −5
+  Venous access late −5
+  Infusion late −5
+  Blood gas analysis late −5
+  FAST ultrasound late −5
+  4. Wrong order (procedural violations)
+  The right action, but in the wrong clinical sequence. Each is penalised once per session.
+  Violation Current points New value Comments
+  Adrenalin/Noradrenalin before −10 Any medication before
+  monitoring
+  monitoring -> except
+  resuscitation
+  Any medication before ABC −10 Exception: resuscitation
+  assessment
+  Scoring Weights – Doctor Review · Page 2
+
+=============== PAGE 3 ===============
+  Violation Current points New value Comments
+  Infusion prepared but not −5
+  administered
+  FAST ultrasound before palpation −5
+  Pulse check or palpation before −5
+  breathing check
+  5. Critical errors
+  Forbidden or medically unindicated actions for this scenario and location. Any critical error also triggers the
+  safety cap (Section 6).
+  Critical error Current points New value Comments
+  Wrong decision: PCI on a bleeding −25
+  patient
+  Catecholamines −20
+  (Adrenalin/Noradrenalin) on the
+  normal ward
+  Unindicated anaesthesia induction −15 Add as a separate point
+  (e.g. Ketamine on the ward)
+  intubation without anaesthesia
+  induction (except resuscitation)
+  Shock position without prior pulse / −15 And shock position with
+  recap check
+  dyspnoe oder angina pectoris
+  Oxygen given while SpO2 > 96% −10 Oxygen administered to a
+  patient with chest pain and a
+  SpO2 > 90%
+  6. Pass mark and safety cap
+  Setting Current value New value Comments
+  Starting score 100
+  Pass threshold 70
+  Safety cap – maximum score if Airway 49 (always Fail)
+  or Breathing is missed, or any critical
+  error occurs
+  7. Open questions for the medical consultant
+  Question Your answer
+  Should the same rules apply to all scenarios (NBA bleeding, Good question, I think we should
+  Hypoglykämie, Gesund), or should some rules only apply to certain
+  differentiate between the scenarios
+  scenarios? (e.g. FAST ultrasound in a hypoglycaemia case)
+  Maybe we can discuss this next week
+  Is “patient speaking clearly” acceptable as proof of a clear airway, When a patient is speaking you know that
+  without an explicit airway check?
+  he is able to breathe, but you don’t know
+  if there is something in his mouth that
+  should be removed
+  →
+  not acceptable
+  Scoring Weights – Doctor Review · Page 3
+
+=============== PAGE 4 ===============
+  Question Your answer
+  Should the safety cap also apply when Circulation is missed, or I am not sure what you mean. We should
+  only Airway and Breathing?
+  discuss this next week
+  Are there important errors missing from this list? (e.g. not alerting Good question:
+  the emergency team, leaving the patient alone)
+  both are important errors
+  - intubation without capnography
+  - not checking the airway before
+  intubation
+  - skipping administering oxygen to critical
+  patient
+  - not starting CPR, when the patient does
+  not breathe or has a heart rate below
+  30/min
+  Scoring Weights – Doctor Review · Page 4

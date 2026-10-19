@@ -157,6 +157,14 @@ def new_report(metadata):
             "timing": {"points_deducted": 0},
             "critical_errors": {"points_deducted": 0},
         },
+        # Per-category action detail for interactive dashboard drilldown
+        "abcde_detail": {
+            "A_Airway":      {"actions": []},
+            "B_Breathing":   {"actions": []},
+            "C_Circulation": {"actions": []},
+            "D_Disability":  {"actions": []},
+            "E_Exposure":    {"actions": []},
+        },
         "feedback": [],
         "critical_errors": [],
     }
